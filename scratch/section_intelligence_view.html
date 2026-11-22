@@ -1,0 +1,728 @@
+  <!-- ========================================================================= -->
+  <!-- VIEW 3: LAND INTELLIGENCE (CLEAN, USER-ORIENTED 9 FEATURE TABS)           -->
+  <!-- ========================================================================= -->
+  <section id="view_intelligence" class="app-view hidden space-y-6">
+
+    <!-- Top Card: Selected Location, Preview, Area, Layman Summary & Actions -->
+    <div class="bg-white border border-earth-border rounded-3xl p-6 sm:p-7 shadow-xs space-y-5">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-earth-border pb-5">
+        
+        <!-- Location & Summary Info -->
+        <div class="space-y-2 max-w-2xl">
+          <div class="flex items-center space-x-2">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Selected Land Evaluation</span>
+            <span id="intelSurveyBadge" class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-800 border border-purple-200">
+              DEMO DATA — NOT A VERIFIED REAL-WORLD OBSERVATION
+            </span>
+          </div>
+
+          <h3 id="intelSurveyLocationName" class="text-2xl sm:text-3xl font-bold text-forest-dark font-serif">
+            Faridabad Agro-Urban Fringe
+          </h3>
+
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-earth-muted font-mono">
+            <span id="intelSurveyCoords">28.4007°N, 77.3501°E</span>
+            <span>•</span>
+            <span id="intelSurveyArea">Measured Area: 40.96 Hectares (101.2 Acres)</span>
+            <span>•</span>
+            <span>10m Sentinel-2 GSD</span>
+          </div>
+
+          <!-- Plain Everyday Language Summary -->
+          <p id="intelHeaderSummary" class="text-xs sm:text-sm text-earth-dark/90 leading-relaxed pt-1 font-serif">
+            This land parcel is predominantly cultivable open soil and healthy seasonal plant canopy situated on flat alluvial ground. Around 15% contains roads and paved structures nearby. It has favorable conditions for seasonal agriculture or low-rise building, though subterranean soil chemicals and legal titles require local revenue verification.
+          </p>
+        </div>
+
+        <!-- Satellite Preview Thumbnail & Actions -->
+        <div class="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end gap-3 shrink-0">
+          <div class="flex items-center space-x-3">
+            <div class="w-20 h-20 rounded-2xl overflow-hidden border border-earth-border bg-sand-light shadow-2xs shrink-0 cursor-pointer" onclick="openLightbox('rgb')" title="Click to inspect optical image">
+              <img id="intelThumbImg" src="" alt="Land Optical Preview" class="w-full h-full object-cover hover:scale-105 transition" />
+            </div>
+            <div class="text-xs space-y-1">
+              <div class="font-bold text-forest-dark">Optical Satellite Preview</div>
+              <div class="text-[11px] text-earth-muted">Sentinel-2 True Color</div>
+              <button onclick="openLightbox('rgb')" class="text-[11px] font-bold text-forest hover:underline">Enlarge Image &rarr;</button>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-2 pt-1 w-full sm:w-auto">
+            <button onclick="navigateTo('explore')" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl border border-earth-border bg-earth-cardTint hover:bg-sand-light text-forest text-xs font-semibold transition">
+              🗺️ Explore this land
+            </button>
+            <button onclick="navigateTo('mllab')" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl border border-forest/30 bg-forest/10 hover:bg-forest hover:text-white text-forest text-xs font-bold transition shadow-2xs">
+              ⚡ Test in AI & ML Lab
+            </button>
+            <button onclick="navigateTo('reports')" class="flex-1 sm:flex-initial px-4 py-2 bg-forest hover:bg-forest-dark text-white text-xs font-bold rounded-xl transition shadow-xs">
+              📄 Generate detailed report
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Feature Section Navigation Tabs (Organized into separate clean views) -->
+      <div class="overflow-x-auto scrollbar-none">
+        <div class="inline-flex rounded-2xl bg-earth-cardTint p-1.5 border border-earth-border gap-1 text-xs">
+          <button onclick="switchIntelDomain('overview')" id="domainBtn_overview" class="intel-domain-btn px-3.5 py-2 rounded-xl font-bold bg-forest text-white transition shrink-0">
+            Overview
+          </button>
+          <button onclick="switchIntelDomain('vegetation')" id="domainBtn_vegetation" class="intel-domain-btn px-3.5 py-2 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0">
+            Vegetation
+          </button>
+          <button onclick="switchIntelDomain('soil')" id="domainBtn_soil" class="intel-domain-btn px-3.5 py-2 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0">
+            Soil & Terrain
+          </button>
+          <button onclick="switchIntelDomain('water')" id="domainBtn_water" class="intel-domain-btn px-3.5 py-2 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0">
+            Water
+          </button>
+          <button onclick="switchIntelDomain('weather')" id="domainBtn_weather" class="intel-domain-btn px-3.5 py-2 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0">
+            Weather
+          </button>
+          <button onclick="switchIntelDomain('agriculture')" id="domainBtn_agriculture" class="intel-domain-btn px-3.5 py-2 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0">
+            Farming Potential
+          </button>
+          <button onclick="switchIntelDomain('construction')" id="domainBtn_construction" class="intel-domain-btn px-3.5 py-2 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0">
+            Construction Potential
+          </button>
+          <button onclick="switchIntelDomain('landcover')" id="domainBtn_landcover" class="intel-domain-btn px-3.5 py-2 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0">
+            Land Cover
+          </button>
+          <button onclick="switchIntelDomain('gallery')" id="domainBtn_gallery" class="intel-domain-btn px-3.5 py-2 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0">
+            Images
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 1: OVERVIEW                                                         -->
+    <!-- ======================================================================= -->
+    <div id="domainPanel_overview" class="intel-panel space-y-5">
+      <!-- Plain English Summary Card -->
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-2">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-forest-dark flex items-center space-x-1.5">
+          <span>🌿</span>
+          <span>Land Summary in Everyday Language</span>
+        </h4>
+        <p id="intelOverviewLayman" class="text-xs sm:text-sm text-earth-dark leading-relaxed font-serif">
+          This 40.96-hectare land area in northern India consists predominantly of cultivable open soil and healthy green vegetation, with small clusters of buildings and access tracks. The terrain is flat with gentle slope, minimizing erosion and earth-moving challenges.
+        </p>
+      </div>
+
+      <!-- Core Indicator Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <!-- Card 1 -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Primary Ground Surface</span>
+          <div id="intelOverviewDominant" class="text-lg font-bold text-forest font-serif">Ploughed Open Soil (45.9%)</div>
+          <p class="text-xs text-earth-muted">18.8 hectares of open cultivable ground detected.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Green Plant Health</span>
+          <div id="intelOverviewVeg" class="text-lg font-bold text-forest font-serif">30.8% Vegetation Cover</div>
+          <p class="text-xs text-earth-muted">Healthy green canopy indicating active plant growth.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Ground Stability</span>
+          <div class="text-lg font-bold text-forest font-serif">1.2% Flat Plain Slope</div>
+          <p class="text-xs text-earth-muted">Gentle incline ensures natural drainage without runoff hazard.</p>
+        </div>
+      </div>
+
+      <!-- Feasibility Highlights -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white border border-earth-border rounded-2xl p-5 space-y-3">
+          <div class="flex items-center justify-between border-b border-earth-border pb-2.5">
+            <h5 class="text-xs font-bold text-forest-dark uppercase tracking-wider">Farming Feasibility</h5>
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-forest/10 text-forest">Favorable</span>
+          </div>
+          <p class="text-xs text-earth-muted leading-relaxed">
+            Alluvial soil base and plant vigor support wheat, mustard, and vegetables. Tube-well or canal rights must be confirmed.
+          </p>
+          <button onclick="switchIntelDomain('agriculture')" class="text-xs font-bold text-forest hover:underline">
+            View Farming Potential Details &rarr;
+          </button>
+        </div>
+
+        <div class="bg-white border border-earth-border rounded-2xl p-5 space-y-3">
+          <div class="flex items-center justify-between border-b border-earth-border pb-2.5">
+            <h5 class="text-xs font-bold text-forest-dark uppercase tracking-wider">Construction Feasibility</h5>
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-sand-dark/20 text-[#936639]">Moderate (Zone IV)</span>
+          </div>
+          <p class="text-xs text-earth-muted leading-relaxed">
+            Flat topography minimizes site leveling costs. Local development authority zoning (DDA/GDA/HUDA) must be checked.
+          </p>
+          <button onclick="switchIntelDomain('construction')" class="text-xs font-bold text-forest hover:underline">
+            View Construction Potential Details &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 2: VEGETATION (SIMPLIFIED LANGUAGE FORMAT)                          -->
+    <!-- ======================================================================= -->
+    <div id="domainPanel_vegetation" class="intel-panel hidden space-y-5">
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-1">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-forest-dark flex items-center space-x-1.5">
+          <span>🌿</span>
+          <span>How healthy and dense is the greenery?</span>
+        </h4>
+        <p class="text-xs text-earth-dark leading-relaxed">
+          Plants and crops protect soil from erosion, improve water retention, and reflect active agricultural or ecological usage.
+        </p>
+      </div>
+
+      <!-- 3 Parameter Cards formatted in 4-part structure -->
+      <div class="space-y-4">
+        <!-- Parameter 1: Vegetation Coverage -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Parameter</span>
+              <h5 class="text-sm font-bold text-forest-dark">Vegetation Coverage</h5>
+            </div>
+            <div class="text-right">
+              <span class="text-base font-bold text-forest font-mono" id="valVegCoverage">38.1%</span>
+              <span class="text-[11px] text-earth-muted block" id="areaVegCoverage">15.6 Hectares</span>
+            </div>
+          </div>
+          
+          <div class="w-full h-2.5 rounded-full bg-sand-light overflow-hidden">
+            <div class="h-full bg-forest rounded-full transition-all duration-500" id="barVegCoverage" style="width: 38.1%"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">What does this mean?</span>
+              <p class="text-earth-muted" id="descVegCoverage">Around 38% of the observed land area is covered by living plant canopy, crops, or trees.</p>
+            </div>
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">Why does it matter?</span>
+              <p class="text-earth-muted">Higher vegetation indicates active cultivation, cooler microclimate, and low erosion risk.</p>
+            </div>
+          </div>
+
+          <details class="text-xs text-earth-muted pt-1">
+            <summary class="font-bold text-forest cursor-pointer hover:underline">Technical details (Click to expand)</summary>
+            <p class="pt-2 pl-2 text-[11px] border-l-2 border-forest/30 mt-1">
+              Calculated using the SatelliteUNet model on 10-meter Sentinel-2 optical multi-spectral imagery. Pixels classified as crops, trees, or wetland vegetation are summed across the 40.96 ha survey footprint.
+            </p>
+          </details>
+        </div>
+
+        <!-- Parameter 2: Plant Health Index (NDVI) -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Parameter</span>
+              <h5 class="text-sm font-bold text-forest-dark">Plant Health Index (NDVI)</h5>
+            </div>
+            <div class="text-right">
+              <span class="text-base font-bold text-forest font-mono" id="valVegNdvi">0.64</span>
+              <span class="text-[11px] text-earth-muted block">Scale: -1.0 to +1.0</span>
+            </div>
+          </div>
+
+          <div class="w-full h-2.5 rounded-full bg-sand-light overflow-hidden">
+            <div class="h-full bg-forest rounded-full" style="width: 64%"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">What does this mean?</span>
+              <p class="text-earth-muted">Plants in this parcel are actively absorbing sunlight and photosynthesizing normally with good moisture.</p>
+            </div>
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">Why does it matter?</span>
+              <p class="text-earth-muted">Confirms healthy seasonal crops without severe drought stress or barren degradation.</p>
+            </div>
+          </div>
+
+          <details class="text-xs text-earth-muted pt-1">
+            <summary class="font-bold text-forest cursor-pointer hover:underline">Technical details (Click to expand)</summary>
+            <p class="pt-2 pl-2 text-[11px] border-l-2 border-forest/30 mt-1">
+              Normalized Difference Vegetation Index (NDVI) calculated from Sentinel-2 Near-Infrared (Band 8) and Red (Band 4) wavelengths: (B08 - B04) / (B08 + B04).
+            </p>
+          </details>
+        </div>
+
+        <!-- Parameter 3: Tree & Wooded Canopy Density -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Parameter</span>
+              <h5 class="text-sm font-bold text-forest-dark">Tree & Wooded Cover</h5>
+            </div>
+            <div class="text-right">
+              <span class="text-base font-bold text-forest font-mono" id="valVegTrees">2.79 ha</span>
+              <span class="text-[11px] text-earth-muted block" id="lblVegTrees">6.8% of land</span>
+            </div>
+          </div>
+
+          <div class="w-full h-2.5 rounded-full bg-sand-light overflow-hidden">
+            <div class="h-full bg-forest rounded-full" style="width: 15%"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">What does this mean?</span>
+              <p class="text-earth-muted">There are scattered trees, roadside shelterbelts, or orchard woodlots covering nearly 3 hectares.</p>
+            </div>
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">Why does it matter?</span>
+              <p class="text-earth-muted">Trees provide natural shade, windbreaks, and biodiversity, but may require forest department permissions if clearing for building.</p>
+            </div>
+          </div>
+
+          <details class="text-xs text-earth-muted pt-1">
+            <summary class="font-bold text-forest cursor-pointer hover:underline">Technical details (Click to expand)</summary>
+            <p class="pt-2 pl-2 text-[11px] border-l-2 border-forest/30 mt-1">
+              Classified by SatelliteUNet Class 2 (Tree Cover) from Sentinel-2 MSI 10m Ground Sampling Distance.
+            </p>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 3: SOIL & TERRAIN                                                   -->
+    <!-- ======================================================================= -->
+    <div id="domainPanel_soil" class="intel-panel hidden space-y-5">
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-1">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-forest-dark flex items-center space-x-1.5">
+          <span>⛰️</span>
+          <span>Is the ground flat, steep, or likely to collect water?</span>
+        </h4>
+        <p class="text-xs text-earth-dark leading-relaxed">
+          Ground slope and elevation determine water flow, erosion vulnerability, and how easily machinery can operate.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Parameter 1: Ground Slope -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Parameter</span>
+              <h5 class="text-sm font-bold text-forest-dark">Ground Slope Gradient</h5>
+            </div>
+            <div class="text-right">
+              <span class="text-base font-bold text-forest font-mono" id="valSoilSlope">1.2%</span>
+              <span class="text-[11px] text-earth-muted block" id="lblSoilSlope">Gentle Flat Plain</span>
+            </div>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-sand-light overflow-hidden">
+            <div class="h-full bg-forest rounded-full" style="width: 12%"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">What does this mean?</span>
+              <p class="text-earth-muted">The ground is essentially flat with an incline of just 1.2 meters over 100 meters distance.</p>
+            </div>
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">Why does it matter?</span>
+              <p class="text-earth-muted">Easy to plough, tractor friendly, and requires very little costly earth grading before construction.</p>
+            </div>
+          </div>
+          <details class="text-xs text-earth-muted pt-1">
+            <summary class="font-bold text-forest cursor-pointer hover:underline">Technical details (Click to expand)</summary>
+            <p class="pt-2 pl-2 text-[11px] border-l-2 border-forest/30 mt-1">
+              Derived from NASA SRTM v3.0 30-meter Digital Elevation Model by calculating the maximum rate of elevation change across adjacent cells.
+            </p>
+          </details>
+        </div>
+
+        <!-- Parameter 2: Elevation Above Sea Level -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Parameter</span>
+              <h5 class="text-sm font-bold text-forest-dark">Elevation Above Sea Level</h5>
+            </div>
+            <div class="text-right">
+              <span class="text-base font-bold text-forest font-mono" id="valSoilElev">212 meters</span>
+              <span class="text-[11px] text-earth-muted block">AMSL (WGS84)</span>
+            </div>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-sand-light overflow-hidden">
+            <div class="h-full bg-forest rounded-full" style="width: 42%"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">What does this mean?</span>
+              <p class="text-earth-muted">The parcel sits comfortably at 212 meters above sea level in the Indo-Gangetic river basin.</p>
+            </div>
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">Why does it matter?</span>
+              <p class="text-earth-muted">Completely free from coastal storm tides and sea level rise concerns.</p>
+            </div>
+          </div>
+          <details class="text-xs text-earth-muted pt-1">
+            <summary class="font-bold text-forest cursor-pointer hover:underline">Technical details (Click to expand)</summary>
+            <p class="pt-2 pl-2 text-[11px] border-l-2 border-forest/30 mt-1">
+              Measured by NASA Space Shuttle Radar Topography Mission (SRTM) calibrated against local geodetic benchmarks.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Zero-Fabrication Honest Data State Box -->
+      <div class="bg-sand-light/40 border border-sand-dark/40 rounded-2xl p-5 space-y-2">
+        <div class="flex items-center space-x-2 text-terracotta font-bold text-xs">
+          <span>⚠️</span>
+          <span>Important Notice: Subterranean Soil Chemistry</span>
+        </div>
+        <p class="text-xs text-earth-dark">
+          <strong>Subterranean Nutrients (N, P, K, pH):</strong> <span class="font-semibold text-terracotta">Not available in current dataset</span>. Satellites can see surface color and plants, but cannot test subterranean soil chemistry.
+        </p>
+        <p class="text-xs text-earth-muted">
+          <strong>What is required:</strong> A physical soil core must be collected and delivered to your nearest Krishi Vigyan Kendra or certified testing laboratory for fertilizer recommendations.
+        </p>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 4: WATER                                                            -->
+    <!-- ======================================================================= -->
+    <div id="domainPanel_water" class="intel-panel hidden space-y-5">
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-1">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-forest-dark flex items-center space-x-1.5">
+          <span>💧</span>
+          <span>Is this parcel prone to waterlogging or near active water bodies?</span>
+        </h4>
+        <p class="text-xs text-earth-dark leading-relaxed">
+          Assesses standing water bodies, soil moisture, and regional flood accumulation risks.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Parameter 1: Standing Water Extent -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Parameter</span>
+              <h5 class="text-sm font-bold text-forest-dark">Standing Surface Water</h5>
+            </div>
+            <div class="text-right">
+              <span class="text-base font-bold text-forest font-mono" id="valWaterExtent">0.07 ha</span>
+              <span class="text-[11px] text-earth-muted block" id="lblWaterExtent">0.17% of parcel</span>
+            </div>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-sand-light overflow-hidden">
+            <div class="h-full bg-forest rounded-full" style="width: 2%"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">What does this mean?</span>
+              <p class="text-earth-muted">There is practically no standing open water or flood ponding across the surveyed land.</p>
+            </div>
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">Why does it matter?</span>
+              <p class="text-earth-muted">Means land is immediately accessible without requiring dewatering or drainage pumping.</p>
+            </div>
+          </div>
+          <details class="text-xs text-earth-muted pt-1">
+            <summary class="font-bold text-forest cursor-pointer hover:underline">Technical details (Click to expand)</summary>
+            <p class="pt-2 pl-2 text-[11px] border-l-2 border-forest/30 mt-1">
+              Detected by Sentinel-2 NDWI (Normalized Difference Water Index) using Green (B03) and Near-Infrared (B08) light bands.
+            </p>
+          </details>
+        </div>
+
+        <!-- Parameter 2: Soil Moisture -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Parameter</span>
+              <h5 class="text-sm font-bold text-forest-dark">Near-Surface Soil Moisture</h5>
+            </div>
+            <div class="text-right">
+              <span class="text-base font-bold text-forest font-mono" id="valWaterMoisture">22%</span>
+              <span class="text-[11px] text-earth-muted block">Volumetric Content</span>
+            </div>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-sand-light overflow-hidden">
+            <div class="h-full bg-forest rounded-full" style="width: 44%"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">What does this mean?</span>
+              <p class="text-earth-muted">The top layer of soil has moderate dampness, typical for agricultural land during active season.</p>
+            </div>
+            <div class="p-3 bg-earth-cardTint rounded-xl border border-earth-border/60">
+              <span class="font-bold text-earth-dark block mb-0.5">Why does it matter?</span>
+              <p class="text-earth-muted">Supports seed germination without causing waterlogged root rot.</p>
+            </div>
+          </div>
+          <details class="text-xs text-earth-muted pt-1">
+            <summary class="font-bold text-forest cursor-pointer hover:underline">Technical details (Click to expand)</summary>
+            <p class="pt-2 pl-2 text-[11px] border-l-2 border-forest/30 mt-1">
+              Estimated from Sentinel-2 Short-Wave Infrared (SWIR) absorption proxies combined with regional hydrological models.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Water Rights Disclosure -->
+      <div class="bg-sand-light/40 border border-sand-dark/40 rounded-2xl p-5 space-y-2 text-xs">
+        <span class="font-bold text-forest-dark block">Canal Water Allocation & Underground Borewells:</span>
+        <p class="text-earth-muted">
+          Space observation cannot prove canal water supply rights or depth to groundwater. You must consult the local Irrigation Department and Central Ground Water Board (CGWB) records.
+        </p>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 5: WEATHER                                                          -->
+    <!-- ======================================================================= -->
+    <div id="domainPanel_weather" class="intel-panel hidden space-y-5">
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-1">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-forest-dark flex items-center space-x-1.5">
+          <span>🌦️</span>
+          <span>What are the typical rain, heat, and seasonal weather patterns?</span>
+        </h4>
+        <p class="text-xs text-earth-dark leading-relaxed">
+          Regional climate benchmarks and current weather telemetry affecting agriculture and living conditions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <!-- Weather Card 1 -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Annual Rainfall Normal</span>
+          <div class="text-xl font-bold text-forest font-serif" id="valWeatherRain">750 mm / year</div>
+          <p class="text-xs text-earth-muted">Typical semi-arid monsoon rainfall. 75% falls between July and September.</p>
+        </div>
+
+        <!-- Weather Card 2 -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Current Temperature</span>
+          <div class="text-xl font-bold text-forest font-serif" id="valWeatherTemp">24.5 °C</div>
+          <p class="text-xs text-earth-muted">Optimal mild weather favorable for winter crops and outdoor construction.</p>
+        </div>
+
+        <!-- Weather Card 3 -->
+        <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Solar Sunlight Potential</span>
+          <div class="text-xl font-bold text-forest font-serif">5.4 kWh/m²/day</div>
+          <p class="text-xs text-earth-muted">High solar insolation supports rooftop solar power or solar water pumping.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 6: FARMING POTENTIAL                                                -->
+    <!-- ======================================================================= -->
+    <div id="domainPanel_agriculture" class="intel-panel hidden space-y-5">
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-1">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-forest-dark flex items-center space-x-1.5">
+          <span>🌾</span>
+          <span>Can crops grow successfully on this land?</span>
+        </h4>
+        <p class="text-xs text-earth-dark leading-relaxed">
+          Evaluates crop viability, soil moisture compatibility, and practical farming suggestions for non-agronomists.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white border border-earth-border rounded-2xl p-5 space-y-3">
+          <h5 class="text-xs font-bold uppercase tracking-wider text-forest-dark">Suitable Crops for this Land</h5>
+          <div class="space-y-2 text-xs">
+            <div class="p-3 bg-sand-light/40 rounded-xl border border-sand-dark/20 flex justify-between items-center">
+              <div>
+                <span class="font-bold text-earth-dark block">Winter Season (Rabi):</span>
+                <span class="text-earth-muted">Wheat, Mustard, Chickpeas, Vegetables</span>
+              </div>
+              <span class="text-[10px] font-bold text-forest bg-forest/10 px-2.5 py-0.5 rounded-full">Highly Suitable</span>
+            </div>
+            <div class="p-3 bg-sand-light/40 rounded-xl border border-sand-dark/20 flex justify-between items-center">
+              <div>
+                <span class="font-bold text-earth-dark block">Monsoon Season (Kharif):</span>
+                <span class="text-earth-muted">Millet (Bajra), Sorghum (Jowar), Pulses</span>
+              </div>
+              <span class="text-[10px] font-bold text-forest bg-forest/10 px-2.5 py-0.5 rounded-full">Suitable</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-earth-border rounded-2xl p-5 space-y-3">
+          <h5 class="text-xs font-bold uppercase tracking-wider text-forest-dark">Farming Checklist Before Starting</h5>
+          <ul class="text-xs space-y-2 text-earth-muted">
+            <li class="flex items-start space-x-2">
+              <span class="text-forest font-bold">✓</span>
+              <span>Flat surface slope (1.2%) permits easy tractor ploughing and natural irrigation furrowing.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-terracotta font-bold">!</span>
+              <span>Carry out a laboratory soil test for N-P-K nutrient balance before applying fertilizers.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-terracotta font-bold">!</span>
+              <span>Verify electricity connection for tube-wells or command area canal turns.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 7: CONSTRUCTION POTENTIAL                                           -->
+    <!-- ======================================================================= -->
+    <div id="domainPanel_construction" class="intel-panel hidden space-y-5">
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-1">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-forest-dark flex items-center space-x-1.5">
+          <span>🏗️</span>
+          <span>Is the ground stable and suitable for building?</span>
+        </h4>
+        <p class="text-xs text-earth-dark leading-relaxed">
+          Physical accessibility, site slope, road connections, and foundation considerations for development.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="p-5 bg-white border border-earth-border rounded-2xl space-y-2 shadow-xs">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Excavation Ease</span>
+          <div class="text-lg font-bold text-forest" id="valConstSlope">Favorable (1.2% Slope)</div>
+          <p class="text-xs text-earth-muted">Minimal soil cutting and filling required. Low foundation leveling cost.</p>
+        </div>
+
+        <div class="p-5 bg-white border border-earth-border rounded-2xl space-y-2 shadow-xs">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Seismic Zone</span>
+          <div class="text-lg font-bold text-[#936639]" id="valConstSeismic">Zone IV (NCR Belt)</div>
+          <p class="text-xs text-earth-muted">Standard ductile earthquake reinforcement detailing required under Indian standards.</p>
+        </div>
+
+        <div class="p-5 bg-white border border-earth-border rounded-2xl space-y-2 shadow-xs">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-earth-muted">Road Access</span>
+          <div class="text-lg font-bold text-forest">Adjacent Tracks</div>
+          <p class="text-xs text-earth-muted">Existing paved roads and farm access corridors visible on imagery.</p>
+        </div>
+      </div>
+
+      <!-- Legal Zoning Notice -->
+      <div class="bg-sand-light/40 border border-sand-dark/40 rounded-2xl p-5 space-y-2 text-xs">
+        <span class="font-bold text-forest-dark block">Zoning & Foundation Load-Bearing Verification:</span>
+        <p class="text-earth-muted">
+          Satellite imagery cannot confirm municipal zoning or master plan designations. Verify whether the land is zoned Agricultural, Commercial, or Residential with the regional urban authority. Standard penetration borehole tests must be conducted by a civil engineer prior to structural foundations.
+        </p>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 8: LAND COVER (7 CLASSES)                                           -->
+    <!-- ======================================================================= -->
+    <div id="domainPanel_landcover" class="intel-panel hidden space-y-5">
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-1">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-forest-dark flex items-center space-x-1.5">
+          <span>🗺️</span>
+          <span>What is on the surface right now?</span>
+        </h4>
+        <p class="text-xs text-earth-dark leading-relaxed">
+          Automated classification dividing the 40.96-hectare footprint (64&times;64 satellite pixels) into 7 distinct ground surface types.
+        </p>
+      </div>
+
+      <!-- 7-Class Semantic Table -->
+      <div class="bg-white border border-earth-border rounded-2xl overflow-hidden shadow-xs">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="border-b border-earth-border bg-earth-cardTint text-earth-dark font-bold uppercase tracking-wider text-[10px]">
+              <th class="py-3 px-4">Surface Type</th>
+              <th class="py-3 px-4">Plain Description</th>
+              <th class="py-3 px-4">Pixel Count</th>
+              <th class="py-3 px-4">Coverage (%)</th>
+              <th class="py-3 px-4 text-right">Physical Area (ha)</th>
+            </tr>
+          </thead>
+          <tbody id="intelClassTableBody" class="divide-y divide-earth-border/60 text-earth-text">
+            <!-- Dynamically populated via renderIntelligenceView() -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 9: SATELLITE IMAGES (DEDICATED GALLERY EXPERIENCE)                  -->
+    <!-- ======================================================================= -->
+    <div id="domainPanel_gallery" class="intel-panel hidden space-y-5">
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-1">
+        <div class="flex items-center justify-between">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-forest-dark">Dedicated Satellite Image Gallery</h4>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-forest/10 text-forest">10.0m GSD Optical</span>
+        </div>
+        <p class="text-xs text-earth-dark leading-relaxed">
+          View genuine imagery captured by ESA Copernicus Sentinel-2 MSI alongside neural segmentation maps. Click any image to view in full-screen zoom.
+        </p>
+      </div>
+
+      <!-- Gallery Grid of 3 Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        
+        <!-- Image Card 1: Optical True Color -->
+        <div onclick="openLightbox('rgb')" class="bg-white border border-earth-border rounded-2xl p-4 space-y-3 cursor-pointer hover:border-forest/60 hover:-translate-y-1 transition-all duration-200 shadow-xs group">
+          <div class="aspect-square rounded-xl overflow-hidden bg-sand-light relative">
+            <img id="galleryImgRGB" src="" alt="True Color Optical" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+            <span class="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Optical True Color</span>
+          </div>
+          <div class="space-y-1 text-xs">
+            <div class="font-bold text-forest-dark">Optical RGB Photography</div>
+            <div class="text-[11px] text-earth-muted">Source: ESA Copernicus Sentinel-2 MSI</div>
+            <div class="text-[11px] text-earth-muted">Period: Q1/Q4 Cloud-Free Dry Season Composite</div>
+            <div class="text-[11px] text-earth-muted font-mono">Resolution: 10.0m Ground Sampling Distance</div>
+            <div class="text-[11px] text-earth-muted font-mono">Location: <span class="galleryParcelName">Faridabad Agro-Urban Fringe</span></div>
+            <div class="pt-1 flex items-center justify-between">
+              <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-forest/10 text-forest">Real Imagery</span>
+              <span class="text-[11px] font-bold text-forest group-hover:underline">Open Fullscreen &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Card 2: Neural Classification Mask -->
+        <div onclick="openLightbox('mask')" class="bg-white border border-earth-border rounded-2xl p-4 space-y-3 cursor-pointer hover:border-forest/60 hover:-translate-y-1 transition-all duration-200 shadow-xs group">
+          <div class="aspect-square rounded-xl overflow-hidden bg-sand-light relative">
+            <img id="galleryImgMask" src="" alt="Neural Land-Cover Mask" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+            <span class="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Neural Mask</span>
+          </div>
+          <div class="space-y-1 text-xs">
+            <div class="font-bold text-forest-dark">7-Class Land-Cover Segmentation</div>
+            <div class="text-[11px] text-earth-muted">Model: SatelliteUNet (mIoU: 0.4839)</div>
+            <div class="text-[11px] text-earth-muted">Period: Synced to Optical Ingestion Cycle</div>
+            <div class="text-[11px] text-earth-muted font-mono">Resolution: 10.0m Ground Sampling Distance</div>
+            <div class="text-[11px] text-earth-muted font-mono">Location: <span class="galleryParcelName">Faridabad Agro-Urban Fringe</span></div>
+            <div class="pt-1 flex items-center justify-between">
+              <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-forest/10 text-forest">AI Derivative</span>
+              <span class="text-[11px] font-bold text-forest group-hover:underline">Open Fullscreen &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Card 3: Calibration Triad Composite -->
+        <div onclick="openLightbox('composite')" class="bg-white border border-earth-border rounded-2xl p-4 space-y-3 cursor-pointer hover:border-forest/60 hover:-translate-y-1 transition-all duration-200 shadow-xs group">
+          <div class="aspect-square rounded-xl overflow-hidden bg-sand-light relative">
+            <img id="galleryImgComposite" src="" alt="Composite Triad" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+            <span class="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Verification Triad</span>
+          </div>
+          <div class="space-y-1 text-xs">
+            <div class="font-bold text-forest-dark">Side-by-Side Sensor Calibration</div>
+            <div class="text-[11px] text-earth-muted">Source: Optical vs Classified Neural Overlay</div>
+            <div class="text-[11px] text-earth-muted">Period: Validation Benchmark (Epoch 20)</div>
+            <div class="text-[11px] text-earth-muted font-mono">Resolution: 10.0m Ground Sampling Distance</div>
+            <div class="text-[11px] text-earth-muted font-mono">Location: <span class="galleryParcelName">Faridabad Agro-Urban Fringe</span></div>
+            <div class="pt-1 flex items-center justify-between">
+              <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-forest/10 text-forest">Calibration Feed</span>
+              <span class="text-[11px] font-bold text-forest group-hover:underline">Open Fullscreen &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>

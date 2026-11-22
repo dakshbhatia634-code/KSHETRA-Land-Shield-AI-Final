@@ -1,0 +1,735 @@
+  <!-- ========================================================================= -->
+  <!-- VIEW 10: LAND DISCOVERY & GEOSPATIAL INTELLIGENCE LAB                      -->
+  <!-- ========================================================================= -->
+  <section id="view_mllab" class="app-view hidden space-y-7">
+
+    <!-- Premium Editorial Hero Banner -->
+    <div class="bg-gradient-to-br from-[#2B4333] via-[#45634D] to-[#1E2E23] text-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm relative overflow-hidden">
+      <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-forest-light/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative z-10 space-y-3.5 max-w-3xl">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-3 py-1 rounded-full bg-white/15 text-sand-light text-[10px] font-bold uppercase tracking-widest backdrop-blur-xs">
+            Geospatial Earth Intelligence
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full bg-sage/30 text-sand-light text-[10px] font-mono">
+            32 Verified Indian Regions • 1,500 Survey Tiles
+          </span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-bold font-serif tracking-tight text-white leading-tight">
+          Land Pattern Discovery & Environmental Insights
+        </h2>
+        <p class="text-xs sm:text-base text-sand-light/90 leading-relaxed font-serif max-w-2xl">
+          Autonomous analytical pipelines evaluating multi-spectral satellite imagery, topographic terrain models, and regional climatic normals across India to uncover natural ground patterns and land potential.
+        </p>
+      </div>
+
+      <!-- Feature Capabilities Bar (Natural Product Language, Zero Algorithm Clutter) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 mt-6 border-t border-white/15 text-xs">
+        <div class="bg-white/10 rounded-2xl p-3 backdrop-blur-xs space-y-1">
+          <div class="text-[10px] uppercase font-bold text-sand-light tracking-wider">Pattern Discovery</div>
+          <div class="font-bold text-white text-sm">Natural Agro-Zones</div>
+          <div class="text-[10px] text-sage-light">Automatic outlier & anomaly detection</div>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-3 backdrop-blur-xs space-y-1">
+          <div class="text-[10px] uppercase font-bold text-sand-light tracking-wider">Analog Search</div>
+          <div class="font-bold text-white text-sm">Similar Land Finder</div>
+          <div class="text-[10px] text-sage-light">Normalized similarity across 1,500 parcels</div>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-3 backdrop-blur-xs space-y-1">
+          <div class="text-[10px] uppercase font-bold text-sand-light tracking-wider">Surface Classification</div>
+          <div class="font-bold text-white text-sm">Land Cover Recognition</div>
+          <div class="text-[10px] text-sage-light">7-class ground signature identification</div>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-3 backdrop-blur-xs space-y-1">
+          <div class="text-[10px] uppercase font-bold text-sand-light tracking-wider">Bio-Physical Trends</div>
+          <div class="font-bold text-white text-sm">Vegetation Health Index</div>
+          <div class="text-[10px] text-sage-light">Continuous canopy percentage & vitality</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Navigation Tab Bar -->
+    <div class="overflow-x-auto scrollbar-none pb-1">
+      <div class="inline-flex rounded-2xl bg-white p-1.5 border border-earth-border gap-1 text-xs shadow-xs">
+        <button onclick="switchMLTab('patterns')" id="mlTabBtn_patterns" class="mllab-tab-btn px-4 py-2.5 rounded-xl font-bold bg-forest text-white transition shrink-0 flex items-center space-x-2">
+          <span>🌐</span><span>Land Pattern Discovery</span>
+        </button>
+        <button onclick="switchMLTab('knn')" id="mlTabBtn_knn" class="mllab-tab-btn px-4 py-2.5 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0 flex items-center space-x-2">
+          <span>🔍</span><span>Similar Land Finder</span>
+        </button>
+        <button onclick="switchMLTab('vegetation')" id="mlTabBtn_vegetation" class="mllab-tab-btn px-4 py-2.5 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0 flex items-center space-x-2">
+          <span>🌿</span><span>Vegetation Trend Insights</span>
+        </button>
+        <button onclick="switchMLTab('recognition')" id="mlTabBtn_recognition" class="mllab-tab-btn px-4 py-2.5 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0 flex items-center space-x-2">
+          <span>🎯</span><span>Land Cover Recognition</span>
+        </button>
+        <button onclick="switchMLTab('potential')" id="mlTabBtn_potential" class="mllab-tab-btn px-4 py-2.5 rounded-xl font-semibold text-earth-text hover:bg-sand-light transition shrink-0 flex items-center space-x-2">
+          <span>🌾</span><span>Agricultural & Terrain Potential</span>
+        </button>
+        <button onclick="switchMLTab('dataset')" id="mlTabBtn_dataset" class="mllab-tab-btn px-4 py-2.5 rounded-xl font-semibold text-earth-muted hover:text-earth-dark hover:bg-sand-light transition shrink-0 flex items-center space-x-2">
+          <span>🗃️</span><span>View Verified Dataset</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 1: LAND PATTERN DISCOVERY & REGIONAL CATALOGUE                      -->
+    <!-- ======================================================================= -->
+    <div id="mlTab_patterns" class="mllab-tab space-y-6">
+      
+      <!-- Interactive Filter & Search Bar -->
+      <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="space-y-1">
+            <h3 class="font-bold text-forest-dark text-base font-serif">Verified Indian Land Regions & Natural Patterns</h3>
+            <p class="text-xs text-earth-muted font-serif">Explore 32 representative locations across 18 Indian states. Select any card to inspect biophysical telemetry and high-resolution satellite imagery.</p>
+          </div>
+          <div class="flex items-center space-x-2 shrink-0">
+            <input type="text" id="catalogueSearchInput" oninput="filterCatalogueCards()" placeholder="Search state, district, or terrain..." class="px-3.5 py-2 rounded-xl border border-earth-border text-xs w-64 focus:outline-none focus:ring-1 focus:ring-forest bg-earth-cardTint text-earth-dark">
+          </div>
+        </div>
+
+        <!-- Quick Filter Pills -->
+        <div class="flex flex-wrap items-center gap-1.5 text-xs pt-1 border-t border-earth-border">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-earth-muted mr-1">Filter by Zone:</span>
+          <button onclick="filterCatalogueByZone('all')" class="cat-filter-btn px-3 py-1 rounded-lg bg-forest text-white font-semibold transition" data-zone="all">All India (32)</button>
+          <button onclick="filterCatalogueByZone('cropland')" class="cat-filter-btn px-3 py-1 rounded-lg bg-sand-light hover:bg-sand text-forest font-semibold transition" data-zone="cropland">Agricultural Plains</button>
+          <button onclick="filterCatalogueByZone('highland')" class="cat-filter-btn px-3 py-1 rounded-lg bg-sand-light hover:bg-sand text-forest font-semibold transition" data-zone="highland">Highlands & Western Ghats</button>
+          <button onclick="filterCatalogueByZone('arid')" class="cat-filter-btn px-3 py-1 rounded-lg bg-sand-light hover:bg-sand text-forest font-semibold transition" data-zone="arid">Arid & Dry Rangelands</button>
+          <button onclick="filterCatalogueByZone('wetland')" class="cat-filter-btn px-3 py-1 rounded-lg bg-sand-light hover:bg-sand text-forest font-semibold transition" data-zone="wetland">Wetlands & Coastal Deltas</button>
+        </div>
+      </div>
+
+      <!-- Discovered Natural Regimes Summary Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-sand-light/40 border border-sand-dark/40 rounded-2xl p-4 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-forest-dark">Agro-Regime #1</span>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-forest/10 text-forest">Northern Alluvium</span>
+          </div>
+          <div class="font-bold text-forest-dark text-sm">Gangetic & Satluj Plains</div>
+          <div class="text-[11px] text-earth-dark/90 font-serif leading-relaxed">
+            Flat alluvial loam with slope &lt;1.5°, high crop canopy (60–75%), and reliable canal irrigation.
+          </div>
+        </div>
+
+        <div class="bg-sand-light/40 border border-sand-dark/40 rounded-2xl p-4 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-forest-dark">Agro-Regime #2</span>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-forest/10 text-forest">Deccan Vertisols</span>
+          </div>
+          <div class="font-bold text-forest-dark text-sm">Malwa & Vidarbha Black Soil</div>
+          <div class="text-[11px] text-earth-dark/90 font-serif leading-relaxed">
+            Basaltic plateaus (300–600m), moisture-retentive clay soil, high soybean and cotton yields.
+          </div>
+        </div>
+
+        <div class="bg-sand-light/40 border border-sand-dark/40 rounded-2xl p-4 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-forest-dark">Agro-Regime #3</span>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-forest/10 text-forest">Arid Scrubland</span>
+          </div>
+          <div class="font-bold text-forest-dark text-sm">Thar & Rayalaseema Drylands</div>
+          <div class="text-[11px] text-earth-dark/90 font-serif leading-relaxed">
+            Rainfall &lt;450mm, sandy soil with high solar insolation, suited for millets and solar layouts.
+          </div>
+        </div>
+
+        <div class="bg-sand-light/40 border border-sand-dark/40 rounded-2xl p-4 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-forest-dark">Ground Anomalies</span>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-terracotta-light text-terracotta-dark">Anomalies Flagged</span>
+          </div>
+          <div class="font-bold text-forest-dark text-sm">Spectral Outliers & Pockets</div>
+          <div class="text-[11px] text-earth-dark/90 font-serif leading-relaxed">
+            Flags quarries, seasonal mudflats, and salt marshes that diverge from standard regional baselines.
+          </div>
+        </div>
+      </div>
+
+      <!-- 32 Visual Location Cards Grid -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-forest-dark text-sm">Indian Land Catalogue (<span id="catalogueCountText">32 locations</span>)</h3>
+          <span class="text-xs text-earth-muted font-mono">10m Sentinel-2 Optical Preview • Click card to inspect</span>
+        </div>
+
+        <div id="catalogueCardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Dynamically populated from INDIA_LAND_CATALOGUE -->
+        </div>
+      </div>
+
+      <!-- Optional Technical Methodology Disclosure (Syllabus Architecture) -->
+      <details class="bg-earth-cardTint border border-earth-border rounded-2xl p-4 transition group">
+        <summary class="font-bold text-xs text-forest-dark cursor-pointer flex items-center justify-between select-none">
+          <span class="flex items-center space-x-2">
+            <span>📐</span>
+            <span>Technical Methodology & Model Disclosure (Density Clustering Engine)</span>
+          </span>
+          <span class="text-xs text-forest group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <div class="pt-3 mt-3 border-t border-earth-border text-xs text-earth-dark space-y-2 font-serif">
+          <p>
+            <strong>Internal Formulation:</strong> Density-Based Spatial Clustering of Applications with Noise (DBSCAN) operating over standardized 4-dimensional vectors ($\text{lat}, \text{lon}, \text{veg}\%, \text{built}\%$) with hyperspherical neighborhood radius $\epsilon = 0.45$ and density threshold $MinPts = 6$.
+          </p>
+          <p>
+            <strong>Anomaly Identification:</strong> Points not density-reachable from any core cluster boundary receive noise designation (label -1), reliably flagging real earth phenomena such as quarry excavations, industrial runoff, and coastal salt pans.
+          </p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 2: SIMILAR LAND FINDER                                              -->
+    <!-- ======================================================================= -->
+    <div id="mlTab_knn" class="mllab-tab hidden space-y-6">
+      
+      <!-- Editorial Intro Card -->
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-2">
+        <div class="flex items-center space-x-2 text-forest-dark font-bold text-xs uppercase tracking-wider">
+          <span>🔍</span>
+          <span>Where else in India can I find land that looks and behaves just like this?</span>
+        </div>
+        <p class="text-xs sm:text-sm text-earth-dark leading-relaxed font-serif">
+          Instead of making theoretical assumptions, the Similar Land Finder calculates mathematical similarity against 1,500 verified parcels across India, discovering the closest real-world ecological and developmental analogs.
+        </p>
+      </div>
+
+      <!-- Query Controls -->
+      <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-xs space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-earth-border pb-4">
+          <div>
+            <h3 class="font-bold text-forest-dark text-sm">Analog Search Parameters</h3>
+            <p class="text-xs text-earth-muted font-serif">Adjust the number of similar locations and specify the reference land characteristics.</p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-xs font-bold text-earth-muted">Analog Count (K):</span>
+            <button onclick="setKNN_K(3)" id="knnKBtn_3" class="px-3 py-1 rounded-lg text-xs font-bold border border-earth-border hover:bg-sand-light text-earth-dark">3</button>
+            <button onclick="setKNN_K(5)" id="knnKBtn_5" class="px-3 py-1 rounded-lg text-xs font-bold bg-forest text-white">5</button>
+            <button onclick="setKNN_K(10)" id="knnKBtn_10" class="px-3 py-1 rounded-lg text-xs font-bold border border-earth-border hover:bg-sand-light text-earth-dark">10</button>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <button onclick="querySimilarParcels()" class="px-5 py-2.5 rounded-xl bg-forest hover:bg-forest-dark text-white text-xs font-bold transition shadow-xs flex items-center space-x-2">
+            <span>🔍</span><span>Find Similar Land Parcels Across India</span>
+          </button>
+          <button onclick="loadCurrentParcelIntoKNN()" class="px-4 py-2.5 rounded-xl border border-earth-border bg-earth-cardTint hover:bg-sand-light text-forest text-xs font-semibold transition">
+            📍 Match Currently Inspected Parcel (<span id="knnCurrentParcelName">Faridabad</span>)
+          </button>
+        </div>
+      </div>
+
+      <!-- Neighbor Results Grid -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-forest-dark text-sm">Most Similar Verified Land Locations</h3>
+          <span id="knnResultsCount" class="text-xs text-earth-muted font-mono">Found 5 matches</span>
+        </div>
+
+        <div id="knnResultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Dynamically populated with analog cards -->
+        </div>
+      </div>
+
+      <!-- Optional Technical Methodology Disclosure -->
+      <details class="bg-earth-cardTint border border-earth-border rounded-2xl p-4 transition group">
+        <summary class="font-bold text-xs text-forest-dark cursor-pointer flex items-center justify-between select-none">
+          <span class="flex items-center space-x-2">
+            <span>📐</span>
+            <span>Technical Methodology & Model Disclosure (Instance-Based Distance Metric)</span>
+          </span>
+          <span class="text-xs text-forest group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <div class="pt-3 mt-3 border-t border-earth-border text-xs text-earth-dark space-y-2 font-serif">
+          <p>
+            <strong>Distance Formula:</strong> Standardized multi-dimensional Euclidean metric $d(p, q) = \sqrt{\sum \frac{(p_i - q_i)^2}{\sigma_i^2}}$ over an 8-dimensional optical and land-cover feature space.
+          </p>
+          <p>
+            <strong>Calibrated Similarity:</strong> Normalized to a percentage: $\text{Similarity} = \frac{100}{1 + d(p, q)}\%$.
+          </p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 3: VEGETATION TREND INSIGHTS                                        -->
+    <!-- ======================================================================= -->
+    <div id="mlTab_vegetation" class="mllab-tab hidden space-y-6">
+      
+      <!-- Editorial Intro Card -->
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-2">
+        <div class="flex items-center space-x-2 text-forest-dark font-bold text-xs uppercase tracking-wider">
+          <span>🌿</span>
+          <span>How healthy and dense is the plant canopy across this parcel?</span>
+        </div>
+        <p class="text-xs sm:text-sm text-earth-dark leading-relaxed font-serif">
+          Analyzes how strongly chlorophyll reflects green solar wavelengths relative to red and blue sunlight to calculate continuous vegetation density and plant vitality.
+        </p>
+      </div>
+
+      <!-- Interactive Canopy Analyzer -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Controls & Presets -->
+        <div class="lg:col-span-6 bg-white border border-earth-border rounded-2xl p-6 shadow-xs space-y-5">
+          <div class="flex items-center justify-between border-b border-earth-border pb-3">
+            <h3 class="font-bold text-forest-dark text-sm">Solar Reflectance Inputs</h3>
+            <span class="text-[10px] text-earth-muted font-mono">Calibrated Bottom-of-Atmosphere (BOA)</span>
+          </div>
+
+          <!-- Quick Presets -->
+          <div class="space-y-1.5">
+            <div class="text-[11px] font-bold uppercase text-earth-muted">Select Land Canopy Preset:</div>
+            <div class="flex flex-wrap gap-1.5 text-xs">
+              <button onclick="setRegPreset(45, 145, 40, 22)" class="px-3 py-1.5 rounded-xl bg-sand-light hover:bg-sand text-forest font-semibold transition">
+                🌲 Lush Forest Canopy
+              </button>
+              <button onclick="setRegPreset(85, 135, 75, 16)" class="px-3 py-1.5 rounded-xl bg-sand-light hover:bg-sand text-forest font-semibold transition">
+                🌾 Cultivated Crops
+              </button>
+              <button onclick="setRegPreset(150, 140, 135, 12)" class="px-3 py-1.5 rounded-xl bg-sand-light hover:bg-sand text-forest font-semibold transition">
+                🏢 Built-up Pavement
+              </button>
+              <button onclick="setRegPreset(180, 155, 125, 9)" class="px-3 py-1.5 rounded-xl bg-sand-light hover:bg-sand text-forest font-semibold transition">
+                🏜️ Barren Topsoil
+              </button>
+            </div>
+          </div>
+
+          <!-- Sliders -->
+          <div class="space-y-4 pt-2">
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-earth-dark mb-1">
+                <span>Red Solar Absorption (Band 4)</span>
+                <span id="regVal_red" class="font-mono text-forest">95</span>
+              </div>
+              <input type="range" id="regSlider_red" min="20" max="230" value="95" oninput="updateRegPrediction()" class="w-full accent-forest cursor-pointer">
+              <div class="flex justify-between text-[10px] text-earth-muted"><span>Chlorophyll absorbs red light</span><span>Bare ground reflects red</span></div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-earth-dark mb-1">
+                <span>Green Solar Reflectance (Band 3)</span>
+                <span id="regVal_green" class="font-mono text-forest">140</span>
+              </div>
+              <input type="range" id="regSlider_green" min="20" max="230" value="140" oninput="updateRegPrediction()" class="w-full accent-forest cursor-pointer">
+              <div class="flex justify-between text-[10px] text-earth-muted"><span>Low vegetative vitality</span><span>High healthy leaf reflection</span></div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-earth-dark mb-1">
+                <span>Blue Solar Reflectance (Band 2)</span>
+                <span id="regVal_blue" class="font-mono text-forest">80</span>
+              </div>
+              <input type="range" id="regSlider_blue" min="20" max="230" value="80" oninput="updateRegPrediction()" class="w-full accent-forest cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-earth-dark mb-1">
+                <span>Canopy Texture Variance (σ_g)</span>
+                <span id="regVal_std" class="font-mono text-forest">16</span>
+              </div>
+              <input type="range" id="regSlider_std" min="2" max="50" value="16" oninput="updateRegPrediction()" class="w-full accent-forest cursor-pointer">
+              <div class="flex justify-between text-[10px] text-earth-muted"><span>Uniform smooth terrain</span><span>Complex multi-tier canopy</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Display -->
+        <div class="lg:col-span-6 bg-white border border-earth-border rounded-2xl p-6 shadow-xs flex flex-col justify-between space-y-5">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-earth-border pb-3">
+              <h3 class="font-bold text-forest-dark text-sm">Estimated Canopy Coverage</h3>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-forest/10 text-forest">
+                Bio-Physical Assessment
+              </span>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-earth-cardTint border border-earth-border text-center space-y-2">
+              <div class="text-[11px] font-bold uppercase text-earth-muted tracking-wider">Continuous Greenery Coverage</div>
+              <div id="regResultPct" class="text-5xl font-extrabold text-forest font-serif">
+                38.4%
+              </div>
+              <div id="regResultBadge" class="inline-block px-3.5 py-1 rounded-full text-xs font-bold bg-sage-light/50 text-forest-dark">
+                Moderate Healthy Vegetation
+              </div>
+            </div>
+
+            <!-- Progress Meter -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-semibold text-earth-dark">
+                <span>Vegetative Spectrum</span>
+                <span id="regResultBarText">38.4% of land surface</span>
+              </div>
+              <div class="h-3 w-full bg-sand-light rounded-full overflow-hidden">
+                <div id="regResultBar" class="h-full bg-forest rounded-full transition-all duration-300" style="width: 38.4%;"></div>
+              </div>
+            </div>
+
+            <p id="regResultSummary" class="text-xs text-earth-dark/90 leading-relaxed font-serif">
+              Healthy photosynthetic green canopy covers approximately one-third of the parcel with strong chlorophyll absorption in red wavelengths.
+            </p>
+          </div>
+
+          <!-- Agricultural Meaning Card -->
+          <div class="p-4 bg-sand-light/40 rounded-2xl border border-sand space-y-1.5 text-xs font-serif text-earth-dark">
+            <div class="font-bold text-forest-dark text-[11px] uppercase tracking-wider">What does this mean for this land?</div>
+            <p>
+              Parcels with 30–60% vegetative cover typically indicate active seasonal crop cycles, adequate topsoil moisture, and low soil erosion vulnerability under normal monsoon cycles.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Test Samples Preview Grid -->
+      <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-xs space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-earth-border pb-3">
+          <div>
+            <h3 class="font-bold text-forest-dark text-sm">Empirical Ground-Truth Calibration</h3>
+            <p class="text-xs text-earth-muted font-serif">Actual surveyed vegetation vs. predicted values across held-out Indian satellite parcels.</p>
+          </div>
+          <div class="flex items-center space-x-3 text-xs font-mono">
+            <span class="px-2.5 py-1 bg-sage-light/30 rounded-lg text-forest font-bold">R² = 0.195</span>
+            <span class="px-2.5 py-1 bg-sand-light rounded-lg text-earth-dark font-bold">Average Error: ±7.6%</span>
+          </div>
+        </div>
+
+        <div id="regScatterGrid" class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-2 text-center text-xs">
+          <!-- Filled dynamically with scatter cards -->
+        </div>
+      </div>
+
+      <!-- Optional Technical Methodology Disclosure -->
+      <details class="bg-earth-cardTint border border-earth-border rounded-2xl p-4 transition group">
+        <summary class="font-bold text-xs text-forest-dark cursor-pointer flex items-center justify-between select-none">
+          <span class="flex items-center space-x-2">
+            <span>📐</span>
+            <span>Technical Methodology & Model Disclosure (Ordinary Least Squares)</span>
+          </span>
+          <span class="text-xs text-forest group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <div class="pt-3 mt-3 border-t border-earth-border text-xs text-earth-dark space-y-2 font-serif">
+          <p>
+            <strong>Formulation:</strong> Multi-variate Ordinary Least Squares (OLS) regression mapping 6 optical features ($R, G, B, G-R, B_m, \sigma_g$) to continuous vegetation coverage percentage.
+          </p>
+          <p>
+            <strong>Educational Insight:</strong> The moderate $R^2$ (0.195) provides an authentic demonstration of why raw linear models have bounds when modeling non-linear chlorophyll saturation, motivating non-linear classification and deep convolutional pipelines.
+          </p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 4: LAND COVER RECOGNITION                                           -->
+    <!-- ======================================================================= -->
+    <div id="mlTab_recognition" class="mllab-tab hidden space-y-6">
+      
+      <!-- Editorial Intro Card -->
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-2">
+        <div class="flex items-center space-x-2 text-forest-dark font-bold text-xs uppercase tracking-wider">
+          <span>🎯</span>
+          <span>What primary type of ground surface exists at this location?</span>
+        </div>
+        <p class="text-xs sm:text-sm text-earth-dark leading-relaxed font-serif">
+          Identifies whether the parcel is primarily urban construction, active farmland, tree canopy, water body, or ploughed topsoil by finding the optimal geometric separation between multi-spectral signatures.
+        </p>
+      </div>
+
+      <!-- Interactive Classifier -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Controls & Signature Presets -->
+        <div class="lg:col-span-5 bg-white border border-earth-border rounded-2xl p-6 shadow-xs space-y-5">
+          <div class="flex items-center justify-between border-b border-earth-border pb-3">
+            <h3 class="font-bold text-forest-dark text-sm">Land Surface Signatures</h3>
+            <span class="text-[10px] text-earth-muted font-mono">Multi-Spectral Classifier</span>
+          </div>
+
+          <div class="space-y-2">
+            <div class="text-[11px] font-bold uppercase text-earth-muted">Select Land Signature Preset:</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <button onclick="runSVMPreset(25, 45, 95, 'Water Reservoir')" class="p-2.5 rounded-xl border border-earth-border hover:bg-sand-light text-left transition flex items-center space-x-2">
+                <span>💧</span><span class="font-semibold text-forest-dark">Water Body</span>
+              </button>
+              <button onclick="runSVMPreset(40, 140, 35, 'Dense Tree Canopy')" class="p-2.5 rounded-xl border border-earth-border hover:bg-sand-light text-left transition flex items-center space-x-2">
+                <span>🌲</span><span class="font-semibold text-forest-dark">Trees & Canopy</span>
+              </button>
+              <button onclick="runSVMPreset(80, 145, 65, 'Agricultural Crops')" class="p-2.5 rounded-xl border border-earth-border hover:bg-sand-light text-left transition flex items-center space-x-2">
+                <span>🌾</span><span class="font-semibold text-forest-dark">Crops & Agriculture</span>
+              </button>
+              <button onclick="runSVMPreset(155, 145, 140, 'Urban Built-up Area')" class="p-2.5 rounded-xl border border-earth-border hover:bg-sand-light text-left transition flex items-center space-x-2">
+                <span>🏢</span><span class="font-semibold text-forest-dark">Built-up / Urban</span>
+              </button>
+              <button onclick="runSVMPreset(175, 150, 120, 'Open Bare Ground')" class="p-2.5 rounded-xl border border-earth-border hover:bg-sand-light text-left transition flex items-center space-x-2">
+                <span>🏜️</span><span class="font-semibold text-forest-dark">Bare Soil</span>
+              </button>
+              <button onclick="runSVMPreset(215, 215, 210, 'High Reflectance')" class="p-2.5 rounded-xl border border-earth-border hover:bg-sand-light text-left transition flex items-center space-x-2">
+                <span>✨</span><span class="font-semibold text-forest-dark">Reflective / Quarry</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sliders -->
+          <div class="space-y-3 pt-2 border-t border-earth-border">
+            <div class="text-[11px] font-bold uppercase text-earth-muted">Fine-Tune Solar Reflectance:</div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-earth-dark mb-1">
+                <span>Red Reflectance</span>
+                <span id="svmVal_red" class="font-mono text-forest">80</span>
+              </div>
+              <input type="range" id="svmSlider_red" min="10" max="240" value="80" oninput="updateSVMPrediction()" class="w-full accent-forest cursor-pointer">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-earth-dark mb-1">
+                <span>Green Reflectance</span>
+                <span id="svmVal_green" class="font-mono text-forest">145</span>
+              </div>
+              <input type="range" id="svmSlider_green" min="10" max="240" value="145" oninput="updateSVMPrediction()" class="w-full accent-forest cursor-pointer">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-earth-dark mb-1">
+                <span>Blue Reflectance</span>
+                <span id="svmVal_blue" class="font-mono text-forest">65</span>
+              </div>
+              <input type="range" id="svmSlider_blue" min="10" max="240" value="65" oninput="updateSVMPrediction()" class="w-full accent-forest cursor-pointer">
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Display -->
+        <div class="lg:col-span-7 bg-white border border-earth-border rounded-2xl p-6 shadow-xs flex flex-col justify-between space-y-5">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-earth-border pb-3">
+              <h3 class="font-bold text-forest-dark text-sm">Identified Ground Surface</h3>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-forest/10 text-forest">
+                Spectral Classification
+              </span>
+            </div>
+
+            <!-- Predicted Class Banner -->
+            <div class="p-5 rounded-2xl bg-earth-cardTint border border-earth-border flex items-center justify-between">
+              <div>
+                <div class="text-[10px] font-bold uppercase text-earth-muted tracking-wider">Dominant Ground Type</div>
+                <div id="svmResultClass" class="text-2xl sm:text-3xl font-bold text-forest-dark font-serif mt-0.5">
+                  Crops & Agriculture
+                </div>
+                <div id="svmResultSummary" class="text-xs text-earth-muted mt-1">
+                  Dominant vegetative spectral signature consistent with cultivable agricultural cycles.
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-[10px] font-bold uppercase text-earth-muted">Confidence</div>
+                <div id="svmResultConfidence" class="text-2xl font-extrabold text-forest font-serif">
+                  78.4%
+                </div>
+              </div>
+            </div>
+
+            <!-- Probability Distribution Bars -->
+            <div class="space-y-2.5 pt-2">
+              <div class="text-[11px] font-bold uppercase text-earth-muted">Calibrated Probability Distribution:</div>
+              <div id="svmProbBarsContainer" class="space-y-2 text-xs">
+                <!-- Dynamically filled with probability bars -->
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3 bg-sand-light/40 rounded-xl text-[11px] text-earth-dark/90 border border-sand font-serif">
+            <strong>Development Interpretation:</strong> Ground identified as bare soil or agricultural plain requires checking regional master plans and conversion regulations before commercial building.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Confusion Matrix Table -->
+      <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-xs space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-earth-border pb-3">
+          <div>
+            <h3 class="font-bold text-forest-dark text-sm">Classification Performance on Held-Out Test Parcels</h3>
+            <p class="text-xs text-earth-muted font-serif">Evaluation across 300 test parcels comparing predicted classes against ground-truth masks.</p>
+          </div>
+          <div class="text-xs font-mono font-bold px-3 py-1 bg-sage-light/30 rounded text-forest">
+            Overall Accuracy: 71.67% • Weighted F1: 0.6831
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-center border-collapse">
+            <thead>
+              <tr class="bg-sand-light/60 text-earth-dark font-bold border-b border-earth-border">
+                <th class="p-2 text-left">Ground Truth \ Predicted</th>
+                <th class="p-2">Trees</th>
+                <th class="p-2">Crops</th>
+                <th class="p-2">Built-up</th>
+                <th class="p-2">Bare Soil</th>
+                <th class="p-2">Reflective</th>
+                <th class="p-2">Precision</th>
+                <th class="p-2">Recall</th>
+                <th class="p-2">F1-Score</th>
+              </tr>
+            </thead>
+            <tbody id="svmConfusionMatrixBody" class="divide-y divide-earth-border/60 font-mono text-[11px]">
+              <!-- Filled dynamically from registry data -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Optional Technical Methodology Disclosure -->
+      <details class="bg-earth-cardTint border border-earth-border rounded-2xl p-4 transition group">
+        <summary class="font-bold text-xs text-forest-dark cursor-pointer flex items-center justify-between select-none">
+          <span class="flex items-center space-x-2">
+            <span>📐</span>
+            <span>Technical Methodology & Model Disclosure (Support Vector Classifier)</span>
+          </span>
+          <span class="text-xs text-forest group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <div class="pt-3 mt-3 border-t border-earth-border text-xs text-earth-dark space-y-2 font-serif">
+          <p>
+            <strong>Kernel Function:</strong> Support Vector Classifier with Radial Basis Function (RBF) Kernel $K(x, x') = \exp(-\gamma ||x - x'||^2)$ with $C=2.0$ and Platt-scaling probability calibration.
+          </p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 5: AGRICULTURAL & TERRAIN POTENTIAL                                 -->
+    <!-- ======================================================================= -->
+    <div id="mlTab_potential" class="mllab-tab hidden space-y-6">
+      
+      <!-- Editorial Intro Card -->
+      <div class="bg-sand-light/50 border border-sand-dark/40 rounded-2xl p-5 space-y-2">
+        <div class="flex items-center space-x-2 text-forest-dark font-bold text-xs uppercase tracking-wider">
+          <span>🌾</span>
+          <span>How do physical land parameters translate into farming and development viability?</span>
+        </div>
+        <p class="text-xs sm:text-sm text-earth-dark leading-relaxed font-serif">
+          Integrates elevation, slope, annual precipitation, and surface vegetative health to assess practical land suitability for agriculture, renewable energy, and building foundations.
+        </p>
+      </div>
+
+      <!-- Potential Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Agricultural Viability Card -->
+        <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-xs space-y-5">
+          <div class="flex items-center justify-between border-b border-earth-border pb-3">
+            <div class="flex items-center space-x-2.5">
+              <span class="text-2xl">🌱</span>
+              <div>
+                <h3 class="font-bold text-forest-dark text-base">Agricultural Potential Synthesis</h3>
+                <div class="text-[11px] text-earth-muted">Based on soil slope, rainfall, and canopy reflectance</div>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">Favorable</span>
+          </div>
+
+          <div class="space-y-3 text-xs text-earth-dark font-serif">
+            <div class="p-3.5 bg-earth-cardTint rounded-xl border border-earth-border space-y-1">
+              <div class="font-bold text-forest-dark text-xs">Topographic Slope (&lt; 2.0°)</div>
+              <p class="text-earth-muted">Gentle alluvial flatland prevents topsoil loss, retains irrigation water evenly, and permits mechanized tractor operations without terracing.</p>
+            </div>
+            <div class="p-3.5 bg-earth-cardTint rounded-xl border border-earth-border space-y-1">
+              <div class="font-bold text-forest-dark text-xs">Seasonal Rainfall (650–1200 mm)</div>
+              <p class="text-earth-muted">Optimal sub-humid to semi-arid monsoon volume supporting two-season crop rotations (Kharif paddy/cotton and Rabi wheat/mustard).</p>
+            </div>
+            <div class="p-3.5 bg-earth-cardTint rounded-xl border border-earth-border space-y-1">
+              <div class="font-bold text-forest-dark text-xs">Recommended Sustainable Practices</div>
+              <p class="text-earth-muted">Laser land leveling, micro-drip irrigation for summer crops, and organic mulch to preserve upper root-zone moisture.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Construction & Civil Potential Card -->
+        <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-xs space-y-5">
+          <div class="flex items-center justify-between border-b border-earth-border pb-3">
+            <div class="flex items-center space-x-2.5">
+              <span class="text-2xl">🏗️</span>
+              <div>
+                <h3 class="font-bold text-forest-dark text-base">Civil & Development Suitability</h3>
+                <div class="text-[11px] text-earth-muted">Based on elevation, slope stability, and drainage corridors</div>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">Stable Ground</span>
+          </div>
+
+          <div class="space-y-3 text-xs text-earth-dark font-serif">
+            <div class="p-3.5 bg-earth-cardTint rounded-xl border border-earth-border space-y-1">
+              <div class="font-bold text-forest-dark text-xs">Earthmoving & Grading Cost: Very Low</div>
+              <p class="text-earth-muted">Natural flat gradient eliminates expensive cut-and-fill operations. Low erosion risk simplifies road sub-base preparation.</p>
+            </div>
+            <div class="p-3.5 bg-earth-cardTint rounded-xl border border-earth-border space-y-1">
+              <div class="font-bold text-forest-dark text-xs">Foundation Considerations</div>
+              <p class="text-earth-muted">Alluvial silt loam requires standard strip footings or raft foundations. Vertisol clay zones require pile footings to resist seasonal swelling.</p>
+            </div>
+            <div class="p-3.5 bg-earth-cardTint rounded-xl border border-earth-border space-y-1">
+              <div class="font-bold text-forest-dark text-xs">Statutory Legal Verification Notice</div>
+              <p class="text-earth-muted">Physical stability does not imply legal construction permission. Always verify non-agricultural (NA) conversion orders in local revenue records.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 6: VIEW VERIFIED DATASET (OPTIONAL REGISTRY)                        -->
+    <!-- ======================================================================= -->
+    <div id="mlTab_dataset" class="mllab-tab hidden space-y-6">
+      <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-xs space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-earth-border pb-3">
+          <div>
+            <h3 class="font-bold text-forest-dark text-base">Sentinel-2 Multi-Spectral Training Dataset</h3>
+            <p class="text-xs text-earth-muted font-serif">1,500 genuine 64×64 satellite tiles with ground-truth segmentation masks extracted from public earth observation archives.</p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <select id="datasetFilterClass" onchange="loadDatasetExplorer(0)" class="px-3 py-1.5 rounded-xl border border-earth-border text-xs font-semibold bg-earth-cardTint text-earth-dark">
+              <option value="">All Land Types</option>
+              <option value="1">Trees & Canopy</option>
+              <option value="3">Crops & Agriculture</option>
+              <option value="4">Built-up / Urban</option>
+              <option value="5">Bare Soil</option>
+              <option value="0">Water Bodies</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Samples Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left border-collapse">
+            <thead>
+              <tr class="bg-sand-light/60 text-earth-dark font-bold border-b border-earth-border">
+                <th class="p-2.5">Tile ID</th>
+                <th class="p-2.5">Coordinates</th>
+                <th class="p-2.5">Mean RGB</th>
+                <th class="p-2.5">Vegetation %</th>
+                <th class="p-2.5">Built-up %</th>
+                <th class="p-2.5">Soil %</th>
+                <th class="p-2.5">Dominant Type</th>
+                <th class="p-2.5 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="datasetTableBody" class="divide-y divide-earth-border/60 font-mono text-[11px]">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Controls with generous bottom padding so floating buttons never overlap -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-earth-border text-xs sm:pr-24 pb-6">
+          <span id="datasetPageInfo" class="text-earth-muted">Showing 1–25 of 1,500 samples</span>
+          <div class="flex items-center space-x-2">
+            <button onclick="changeDatasetPage(-1)" class="px-3 py-1.5 rounded-lg border border-earth-border hover:bg-sand-light font-semibold text-earth-dark">Previous</button>
+            <button onclick="changeDatasetPage(1)" class="px-3 py-1.5 rounded-lg border border-earth-border hover:bg-sand-light font-semibold text-earth-dark">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>

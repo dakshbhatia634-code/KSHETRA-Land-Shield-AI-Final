@@ -1,0 +1,160 @@
+  <!-- ========================================================================= -->
+  <!-- VIEW 8: USER PROFILE                                                      -->
+  <!-- ========================================================================= -->
+  <section id="view_profile" class="app-view hidden space-y-6">
+
+    <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-sm space-y-4">
+      <div class="flex items-center space-x-2 text-forest">
+        <span class="text-xl">👤</span>
+        <h3 class="text-xl font-bold text-forest-dark font-serif">Surveyor Profile & Credentials</h3>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <!-- User Account Card -->
+        <div class="p-5 bg-sand-light/40 rounded-2xl border border-sand-dark/30 space-y-3">
+          <div class="flex items-center justify-between border-b border-sand-dark/30 pb-2">
+            <span class="text-[10px] uppercase font-bold text-earth-muted">Account Identity</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-forest/10 text-forest">Authenticated</span>
+          </div>
+          <div class="space-y-1">
+            <div id="profileFullName" class="text-base font-bold text-forest-dark font-serif">Daksh Test</div>
+            <div id="profileEmail" class="text-xs text-earth-muted font-mono">test@kshetra.ai</div>
+            <div id="profileOrg" class="text-xs text-earth-dark font-medium pt-1">Organization: Land Intelligence Labs</div>
+          </div>
+          <div class="pt-2">
+            <button onclick="openAuthModal()" class="text-forest text-xs font-bold hover:underline">
+              Switch Account or Re-authenticate &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- Hardware & Neural Compute Specifications -->
+        <div class="p-5 bg-sand-light/40 rounded-2xl border border-sand-dark/30 space-y-3">
+          <div class="flex items-center justify-between border-b border-sand-dark/30 pb-2">
+            <span class="text-[10px] uppercase font-bold text-earth-muted">Hardware Compute & AI Engine</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-forest animate-pulse"></span>
+          </div>
+          <div class="space-y-1.5">
+            <div class="text-sm font-bold text-forest">NVIDIA GeForce RTX 3050 Laptop GPU</div>
+            <div class="text-xs text-earth-dark">Neural Architecture: <span class="font-mono font-bold">SatelliteUNet</span></div>
+            <div class="text-xs text-earth-muted">Validation mIoU: <span class="font-mono font-bold text-forest">0.4839</span> (Accuracy: <span class="font-mono font-bold text-forest">79.59%</span>)</div>
+            <div class="text-xs text-earth-muted">Spatial Resolution: <span class="font-mono">10.0m Ground Sampling Distance</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- VIEW 9: SETTINGS & PREFERENCES                                            -->
+  <!-- ========================================================================= -->
+  <section id="view_settings" class="app-view hidden space-y-6">
+
+    <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-sm space-y-5 max-w-2xl">
+      <div class="flex items-center space-x-2 text-forest border-b border-earth-border pb-3">
+        <span class="text-xl">⚙️</span>
+        <h3 class="text-xl font-bold text-forest-dark font-serif">Platform Preferences</h3>
+      </div>
+      
+      <div class="space-y-4 text-xs">
+        <!-- Area Unit Setting -->
+        <div class="space-y-1">
+          <label class="block font-bold text-earth-dark">Area Measurement Units:</label>
+          <select id="appSettingUnits" class="w-full px-3 py-2.5 border border-earth-border rounded-xl bg-white text-xs text-earth-dark outline-none focus:border-forest">
+            <option value="ha">Hectares (Standard Metric - ha)</option>
+            <option value="acre">Acres (Farmland Benchmark - ac)</option>
+            <option value="bigha">Bighas (North Indian Reference - bigha)</option>
+          </select>
+          <p class="text-[11px] text-earth-muted">Converts land area figures dynamically across all analytical views and reports.</p>
+        </div>
+
+        <!-- Default Basemap Setting -->
+        <div class="space-y-1">
+          <label class="block font-bold text-earth-dark">Default Exploration Basemap:</label>
+          <select id="appSettingBasemap" class="w-full px-3 py-2.5 border border-earth-border rounded-xl bg-white text-xs text-earth-dark outline-none focus:border-forest">
+            <option value="satellite">Esri World Imagery (0.3m Satellite)</option>
+            <option value="dark">Esri Dark Canvas (High Contrast)</option>
+            <option value="osm">OpenStreetMap Standard (Streets & Roads)</option>
+          </select>
+        </div>
+
+        <!-- Reduced Motion Setting -->
+        <div class="flex items-center justify-between p-3 bg-sand-light/40 rounded-xl border border-sand-dark/20">
+          <div>
+            <span class="font-bold text-earth-dark block">Reduced Motion Animations:</span>
+            <span class="text-[11px] text-earth-muted">Disables smooth view transitions for accessibility and battery conservation.</span>
+          </div>
+          <input type="checkbox" id="appSettingReducedMotion" class="w-4 h-4 text-forest rounded cursor-pointer" />
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="pt-4 border-t border-earth-border flex items-center justify-between">
+          <button onclick="handleLogout()" class="px-4 py-2 border border-terracotta text-terracotta hover:bg-terracotta/10 rounded-xl font-bold transition text-xs">
+            Sign Out
+          </button>
+          <button onclick="saveAppSettings()" class="px-5 py-2.5 bg-forest hover:bg-forest-dark text-white rounded-xl font-bold transition shadow-xs text-xs">
+            Save Preferences
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- VIEW 10: PUBLIC LANDING (PRE-LOGIN MARKETING VIEW)                        -->
+  <!-- ========================================================================= -->
+  <section id="view_landing" class="app-view hidden space-y-8">
+
+    <!-- Marketing Hero -->
+    <div class="text-center max-w-3xl mx-auto space-y-4 py-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sand-light border border-sand-dark/40 text-[11px] font-bold text-forest uppercase tracking-wider">
+        <span>●</span>
+        <span>Autonomous Earth Observation & Land Intelligence</span>
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold font-serif text-forest-dark tracking-tight">
+        KSHETRA — LAND SHIELD AI
+      </h2>
+      <p class="text-base sm:text-xl font-serif italic text-forest-dark/90">
+        Verifying Titles. Securing Boundaries.
+      </p>
+      <p class="text-xs sm:text-sm text-earth-muted leading-relaxed max-w-xl mx-auto">
+        Understand the land. Make informed decisions. Designed to empower individuals, farmers, and institutions with verified satellite imagery, terrain models, and zero-fabrication due diligence across India.
+      </p>
+      
+      <div class="pt-4 flex items-center justify-center space-x-3">
+        <button onclick="navigateTo('dashboard')" class="px-6 py-3 bg-forest hover:bg-forest-dark text-white text-xs font-bold rounded-xl transition shadow-md">
+          Launch Dashboard &rarr;
+        </button>
+        <button onclick="openAuthModal()" class="px-5 py-3 border border-earth-border bg-white hover:bg-sand-light text-earth-dark text-xs font-bold rounded-xl transition">
+          Sign In / Register
+        </button>
+      </div>
+    </div>
+
+    <!-- 4 Pillars Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+      <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+        <div class="text-2xl">🛰️</div>
+        <div class="text-xs font-bold text-earth-dark">10m Satellite Imagery</div>
+        <p class="text-[11px] text-earth-muted">Continuous observations from ESA Copernicus Sentinel-2 MSI.</p>
+      </div>
+      <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+        <div class="text-2xl">🧠</div>
+        <div class="text-xs font-bold text-earth-dark">SatelliteUNet AI</div>
+        <p class="text-[11px] text-earth-muted">7-class semantic land-cover segmentation at 0.4839 mIoU.</p>
+      </div>
+      <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+        <div class="text-2xl">🌱</div>
+        <div class="text-xs font-bold text-earth-dark">8 Analytic Domains</div>
+        <p class="text-[11px] text-earth-muted">Plain English evaluations for agriculture, soil, and development.</p>
+      </div>
+      <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+        <div class="text-2xl">🛡️</div>
+        <div class="text-xs font-bold text-earth-dark">Zero-Fabrication Charter</div>
+        <p class="text-[11px] text-earth-muted">Unmeasured parameters are transparently disclosed, never faked.</p>
+      </div>
+    </div>
+
+  </section>

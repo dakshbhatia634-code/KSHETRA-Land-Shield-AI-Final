@@ -1,0 +1,63 @@
+  <!-- ========================================================================= -->
+  <!-- VIEW 4: MY PLACES (SAVED LAND PARCELS PORTFOLIO)                          -->
+  <!-- ========================================================================= -->
+  <section id="view_places" class="app-view hidden space-y-6">
+    
+    <!-- Top Action Bar -->
+    <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
+      <div class="space-y-1">
+        <div class="flex items-center space-x-2">
+          <span class="text-xl">⭐</span>
+          <h3 class="text-xl font-bold text-forest-dark font-serif">My Saved Land Parcels</h3>
+          <span id="placesPortfolioCountBadge" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-sand text-forest">0 Parcels</span>
+        </div>
+        <p class="text-xs text-earth-muted">
+          Your personal property due diligence portfolio, synchronized across local storage and encrypted SQLite database storage.
+        </p>
+      </div>
+
+      <div class="flex items-center space-x-2.5">
+        <button onclick="compareSelectedPlaces()" id="btnComparePlaces" class="px-3.5 py-2 bg-earth-cardTint hover:bg-sand-light text-forest border border-earth-border rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-2xs">
+          <span>⚖️</span>
+          <span>Compare Selected</span>
+        </button>
+        <button onclick="promptSaveCurrentLocation()" class="px-4 py-2 bg-forest hover:bg-forest-dark text-white rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-1.5">
+          <span>+</span>
+          <span>Save Current Location</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Filter & Search Toolbar -->
+    <div class="bg-white border border-earth-border rounded-xl p-3 shadow-2xs flex items-center justify-between gap-3 text-xs">
+      <div class="flex-1 max-w-sm relative">
+        <input 
+          id="placesSearchInput" 
+          type="text" 
+          placeholder="Filter saved parcels by title, notes, or coordinates..." 
+          class="w-full pl-8 pr-3 py-1.5 border border-earth-border rounded-lg text-xs outline-none focus:border-forest"
+          oninput="filterSavedPlaces(this.value)"
+        />
+        <svg class="w-3.5 h-3.5 text-earth-muted absolute left-2.5 top-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      </div>
+
+      <div class="flex items-center space-x-2 text-earth-muted">
+        <span>Storage:</span>
+        <span class="font-bold text-forest bg-forest/10 px-2 py-0.5 rounded text-[10px]">SQLite Synced</span>
+      </div>
+    </div>
+
+    <!-- Saved Places Grid -->
+    <div id="fullSavedPlacesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Populated dynamically via renderSavedPlaces() -->
+      <div class="col-span-full py-16 text-center text-earth-muted space-y-3 bg-white border border-earth-border rounded-3xl">
+        <div class="w-12 h-12 rounded-2xl bg-sand-light text-forest mx-auto flex items-center justify-center text-2xl font-serif">📍</div>
+        <div class="text-sm font-bold text-forest-dark font-serif">No Saved Parcels Yet</div>
+        <p class="text-xs max-w-sm mx-auto">Explore India or search any location to save parcels for ongoing due diligence and reporting.</p>
+        <button onclick="navigateTo('explore')" class="px-4 py-2 bg-forest text-white text-xs font-bold rounded-xl transition shadow-xs">
+          Explore India Map &rarr;
+        </button>
+      </div>
+    </div>
+
+  </section>

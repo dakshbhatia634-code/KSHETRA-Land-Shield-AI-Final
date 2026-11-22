@@ -1,0 +1,141 @@
+  <!-- ========================================================================= -->
+  <!-- VIEW 6: REPORTS (OFFICIAL DUE DILIGENCE DOSSIER HUB)                      -->
+  <!-- ========================================================================= -->
+  <section id="view_reports" class="app-view hidden space-y-6">
+
+    <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
+      <div class="space-y-1">
+        <div class="flex items-center space-x-2">
+          <span class="text-xl">📄</span>
+          <h3 class="text-xl font-bold text-forest-dark font-serif">Due Diligence Reports</h3>
+        </div>
+        <p class="text-xs text-earth-muted">
+          Formal, print-ready geospatial intelligence dossiers generated from active satellite telemetry and neural land-cover segmentation.
+        </p>
+      </div>
+
+      <div class="flex items-center space-x-2.5">
+        <button onclick="saveCurrentReportToHistory()" id="btnSaveReportHistory" class="px-3.5 py-2 bg-earth-cardTint hover:bg-sand-light text-forest border border-earth-border rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-2xs">
+          <span>💾</span>
+          <span>Save to History</span>
+        </button>
+        <button onclick="window.print()" class="px-4 py-2 bg-forest hover:bg-forest-dark text-white rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>Print / Save as PDF</span>
+        </button>
+        <button onclick="exportJsonSummary()" class="px-3.5 py-2 bg-earth-cardTint hover:bg-sand-light text-earth-dark rounded-xl text-xs font-bold border border-earth-border transition flex items-center space-x-1.5">
+          <svg class="w-4 h-4 text-earth-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span>Export JSON</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Report History Strip -->
+    <div class="bg-white border border-earth-border rounded-2xl p-4 shadow-2xs space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold text-forest-dark uppercase tracking-wider flex items-center space-x-1.5">
+          <span>🗄️</span>
+          <span>Saved Dossier History</span>
+          <span id="reportsHistoryCountBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-sand text-forest font-mono">0 Dossiers</span>
+        </span>
+        <span class="text-[10px] text-earth-muted">Persisted in SQLite</span>
+      </div>
+      <div id="reportsHistoryList" class="flex items-center overflow-x-auto space-x-2 py-1 scrollbar-none text-xs">
+        <span class="text-earth-muted italic text-xs py-1">No saved dossiers yet. Click "Save to History" above to archive this parcel's report.</span>
+      </div>
+    </div>
+
+    <!-- Official Dossier Document Container -->
+    <div id="reportContainer" class="bg-white border border-earth-border rounded-3xl p-6 sm:p-10 shadow-sm space-y-6 max-w-4xl mx-auto">
+      
+      <!-- Dossier Header -->
+      <div class="border-b-2 border-forest pb-6 flex items-start justify-between">
+        <div class="space-y-1">
+          <div class="flex items-center space-x-2">
+            <span class="w-7 h-7 rounded-lg bg-forest text-white flex items-center justify-center font-bold text-sm">K</span>
+            <span class="text-xl font-bold font-serif text-forest-dark">KSHETRA — LAND SHIELD AI</span>
+          </div>
+          <p class="text-xs font-serif italic text-forest-dark">Verifying Titles. Securing Boundaries.</p>
+          <div class="text-[10px] uppercase font-mono tracking-wider text-earth-muted pt-1">
+            Official Land Intelligence & Due Diligence Dossier
+          </div>
+        </div>
+        <div class="text-right text-xs space-y-0.5">
+          <div id="reportDate" class="text-earth-muted font-mono">Date: 22 Nov 2026</div>
+          <div class="text-forest font-bold font-mono">DOC ID: KSH-2026-IND-0042</div>
+          <div id="reportBadge" class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-800">
+            DEMO DATA SHARD
+          </div>
+        </div>
+      </div>
+
+      <!-- Target Parcel Location Information -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs bg-sand-light/30 p-4 rounded-2xl border border-sand-dark/20">
+        <div class="space-y-1">
+          <span class="text-[10px] uppercase font-bold text-earth-muted">Survey Location Target</span>
+          <div id="reportLocationName" class="text-sm font-bold text-forest-dark">Faridabad Agro-Urban Fringe, Haryana</div>
+          <div id="reportCoords" class="font-mono text-earth-muted text-[11px]">28.40072°N, 77.35007°E</div>
+        </div>
+        <div class="space-y-1 sm:text-right">
+          <span class="text-[10px] uppercase font-bold text-earth-muted">Observation Footprint</span>
+          <div class="text-sm font-bold text-earth-dark">40.96 Hectares (101.2 Acres)</div>
+          <div class="text-[11px] text-earth-muted">Sensor: Sentinel-2 MSI (10.0m GSD)</div>
+        </div>
+      </div>
+
+      <!-- Satellite Triad Visual Inspection -->
+      <div class="space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-earth-dark">Optical & Neural Segmentation Triad</span>
+        <div class="rounded-2xl overflow-hidden border border-earth-border bg-earth-cardTint">
+          <img id="reportCompositeImg" src="" alt="Satellite Triad" class="w-full h-auto object-cover max-h-72" />
+        </div>
+        <p class="text-[11px] text-earth-muted italic text-center">
+          Optical True Color (Left), Model Land-Cover Mask (Center), High-Contrast Verification Triad (Right)
+        </p>
+      </div>
+
+      <!-- Land-Cover Area Breakdown Table -->
+      <div class="space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-earth-dark">Land-Cover Semantic Distribution</span>
+        <div class="border border-earth-border rounded-xl overflow-hidden">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-earth-cardTint border-b border-earth-border text-earth-dark font-bold uppercase tracking-wider text-[10px]">
+                <th class="py-2.5 px-3">Class</th>
+                <th class="py-2.5 px-3">Classification</th>
+                <th class="py-2.5 px-3">Pixel Count</th>
+                <th class="py-2.5 px-3">Share (%)</th>
+                <th class="py-2.5 px-3 text-right">Physical Area (ha)</th>
+              </tr>
+            </thead>
+            <tbody id="reportTableBody" class="divide-y divide-earth-border/40 text-earth-text">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Due Diligence Advisory Summary -->
+      <div class="border-t border-earth-border pt-4 space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-forest-dark">Due Diligence Findings & Required Legal Actions</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="p-3 bg-white border border-earth-border rounded-xl space-y-1">
+            <span class="font-bold text-forest block">Agricultural Viability:</span>
+            <p class="text-earth-muted text-[11px]">Vegetative canopy and alluvial terrain indicate favorable crop viability. Soil testing is required for N-P-K fertilizer regimen.</p>
+          </div>
+          <div class="p-3 bg-white border border-earth-border rounded-xl space-y-1">
+            <span class="font-bold text-forest block">Cadastral & Revenue Deeds:</span>
+            <p class="text-earth-muted text-[11px]">Satellite observation cannot confirm legal title. You must obtain certified Jamabandi / Bhulekh records from the Sub-Registrar.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dossier Footer & Certification Stamp -->
+      <div class="border-t-2 border-forest pt-4 flex items-center justify-between text-[10px] text-earth-muted">
+        <div>Generated by KSHETRA Autonomous Geospatial Platform</div>
+        <div class="font-mono">Engine: SatelliteUNet • CUDA Accelerated</div>
+      </div>
+
+    </div>
+
+  </section>

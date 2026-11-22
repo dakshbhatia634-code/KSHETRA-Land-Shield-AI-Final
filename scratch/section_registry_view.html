@@ -1,0 +1,120 @@
+  <!-- ========================================================================= -->
+  <!-- VIEW 5: DATA SOURCES (DATA PROVENANCE & INTEGRITY REGISTRY)               -->
+  <!-- ========================================================================= -->
+  <section id="view_registry" class="app-view hidden space-y-6">
+
+    <div class="bg-white border border-earth-border rounded-2xl p-6 shadow-xs space-y-2">
+      <div class="flex items-center space-x-2 text-forest">
+        <span class="text-xl">🛰️</span>
+        <h3 class="text-xl font-bold text-forest-dark font-serif">Data Sources & Provenance Registry</h3>
+      </div>
+      <p class="text-xs text-earth-muted leading-relaxed max-w-3xl">
+        Transparent accounting of every dataset, sensor resolution, license, and operational integration status powering KSHETRA. Under our Zero-Fabrication Charter, parameters that cannot be observed from space are explicitly designated as unmeasured or requiring field assays.
+      </p>
+    </div>
+
+    <!-- Data Registry Provenance Table -->
+    <div class="bg-white border border-earth-border rounded-2xl overflow-hidden shadow-xs">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="border-b border-earth-border bg-earth-cardTint text-earth-dark font-bold uppercase tracking-wider text-[10px]">
+              <th class="py-3.5 px-4">Provider & Dataset</th>
+              <th class="py-3.5 px-4">Domain Category</th>
+              <th class="py-3.5 px-4">Spatial Resolution</th>
+              <th class="py-3.5 px-4">License & Attribution</th>
+              <th class="py-3.5 px-4">Integration Status</th>
+            </tr>
+          </thead>
+          <tbody id="registryTableBody" class="divide-y divide-earth-border/60 text-earth-text">
+            <!-- Dynamically populated from /api/geo/registry or static fallback -->
+            <tr class="hover:bg-earth-cardTint transition">
+              <td class="py-3 px-4 font-bold text-forest-dark">ESA Copernicus Sentinel-2 MSI</td>
+              <td class="py-3 px-4 text-earth-muted">Optical & Multi-Spectral Imagery</td>
+              <td class="py-3 px-4 font-mono text-earth-dark">10.0m GSD (Bands 2,3,4,8)</td>
+              <td class="py-3 px-4 text-earth-muted">Open Access (EU Copernicus Legal Notice)</td>
+              <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-forest/10 text-forest">Verified Operational</span></td>
+            </tr>
+            <tr class="hover:bg-earth-cardTint transition">
+              <td class="py-3 px-4 font-bold text-forest-dark">OpenStreetMap Nominatim</td>
+              <td class="py-3 px-4 text-earth-muted">India Geocoding & Boundary Index</td>
+              <td class="py-3 px-4 font-mono text-earth-dark">Vector Point / Polygons</td>
+              <td class="py-3 px-4 text-earth-muted">ODbL (OpenStreetMap contributors)</td>
+              <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-forest/10 text-forest">Verified Operational</span></td>
+            </tr>
+            <tr class="hover:bg-earth-cardTint transition">
+              <td class="py-3 px-4 font-bold text-forest-dark">Open-Meteo Weather API</td>
+              <td class="py-3 px-4 text-earth-muted">Hourly Meteorology & Solar Radiation</td>
+              <td class="py-3 px-4 font-mono text-earth-dark">11km Gridded Weather Models</td>
+              <td class="py-3 px-4 text-earth-muted">CC-BY 4.0 Open Data</td>
+              <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-forest/10 text-forest">Verified Operational</span></td>
+            </tr>
+            <tr class="hover:bg-earth-cardTint transition">
+              <td class="py-3 px-4 font-bold text-forest-dark">NASA SRTM v3.0 DEM</td>
+              <td class="py-3 px-4 text-earth-muted">Topographic Elevation & Slope Gradient</td>
+              <td class="py-3 px-4 font-mono text-earth-dark">30-meter (1 arc-second)</td>
+              <td class="py-3 px-4 text-earth-muted">Public Domain (NASA / USGS)</td>
+              <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-forest/10 text-forest">Verified Operational</span></td>
+            </tr>
+            <tr class="hover:bg-earth-cardTint transition">
+              <td class="py-3 px-4 font-bold text-forest-dark">India Meteorological Dept (IMD)</td>
+              <td class="py-3 px-4 text-earth-muted">Climatological Normals & Rainfall Regimes</td>
+              <td class="py-3 px-4 font-mono text-earth-dark">District-Level Climatology</td>
+              <td class="py-3 px-4 text-earth-muted">Government of India Open Data</td>
+              <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sand-dark/20 text-[#936639]">Derived Benchmark</span></td>
+            </tr>
+            <tr class="hover:bg-earth-cardTint transition">
+              <td class="py-3 px-4 font-bold text-forest-dark">State Land Revenue (Bhulekh / Jamabandi)</td>
+              <td class="py-3 px-4 text-earth-muted">Cadastral Deeds, Khasra, Ownership</td>
+              <td class="py-3 px-4 font-mono text-earth-dark">Cadastral Parcel Registry</td>
+              <td class="py-3 px-4 text-earth-muted">State Revenue Portals</td>
+              <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-terracotta/10 text-terracotta">Field Assay Required</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Zero Fabrication Charter Disclosures: Missing Data & Requirements -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+        <div class="text-xs font-bold text-terracotta flex items-center space-x-1.5">
+          <span>⚠️</span>
+          <span>Subterranean Soil Chemistry</span>
+        </div>
+        <p class="text-xs text-earth-muted leading-relaxed">
+          <strong>What is missing:</strong> Nitrogen (N), Phosphorus (P), Potassium (K), and pH levels. Spaceborne satellites cannot measure subterranean chemistry.
+        </p>
+        <p class="text-xs text-earth-muted">
+          <strong>Source required:</strong> Physical core test at an ICAR / Krishi Vigyan Kendra testing lab.
+        </p>
+      </div>
+
+      <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+        <div class="text-xs font-bold text-terracotta flex items-center space-x-1.5">
+          <span>⚠️</span>
+          <span>Borehole Load-Bearing Capacity</span>
+        </div>
+        <p class="text-xs text-earth-muted leading-relaxed">
+          <strong>What is missing:</strong> Soil safe bearing capacity (SBC) for foundation engineering.
+        </p>
+        <p class="text-xs text-earth-muted">
+          <strong>Source required:</strong> Certified geotechnical engineer standard penetration test (SPT).
+        </p>
+      </div>
+
+      <div class="bg-white border border-earth-border rounded-2xl p-5 shadow-xs space-y-2">
+        <div class="text-xs font-bold text-terracotta flex items-center space-x-1.5">
+          <span>⚠️</span>
+          <span>Cadastral Deeds & Ownership</span>
+        </div>
+        <p class="text-xs text-earth-muted leading-relaxed">
+          <strong>What is missing:</strong> Legal land title, mortgages, disputes, and non-encumbrance status.
+        </p>
+        <p class="text-xs text-earth-muted">
+          <strong>Source required:</strong> Certified Jamabandi / Bhulekh Record of Rights from the local Sub-Registrar / Tehsildar.
+        </p>
+      </div>
+    </div>
+
+  </section>

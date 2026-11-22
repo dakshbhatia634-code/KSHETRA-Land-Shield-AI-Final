@@ -1,0 +1,45 @@
+{
+  "timestamp_utc": "2026-11-20T18:13:44.141647+00:00",
+  "pipeline_version": "1.0.0",
+  "datasets_audited": {
+    "points_2016": {
+      "file": "TrainingPoints2016.csv",
+      "total_records": 968,
+      "nulls": 0,
+      "anomalies": [
+        "Rows 224-233 have system:index formatted as 0.00E+00 due to past spreadsheet scientific notation coercion."
+      ]
+    },
+    "points_2024": {
+      "file": "TrainingPoints2024.csv",
+      "total_records": 968,
+      "nulls": 0,
+      "anomalies": []
+    },
+    "satellite_parquet": {
+      "file": "train-00000-of-00007.parquet",
+      "total_records": 30537,
+      "nulls": {
+        "rgb.bytes": 0,
+        "rgb.path": 0,
+        "mask.bytes": 0,
+        "mask.path": 0,
+        "split": 0
+      },
+      "anomalies": [
+        "Shard 0 of 7 (regional coverage: UTM 43N / Delhi-NCR).",
+        "Absence of embedded text class legend in GeoTIFF metadata."
+      ]
+    }
+  },
+  "harmonization_integrity": {
+    "input_2016_records": 968,
+    "input_2024_records": 968,
+    "output_harmonized_records": 968,
+    "record_retention_rate_pct": 100.0,
+    "unexplained_record_loss": 0,
+    "exact_coordinate_matches": 967,
+    "proximity_matches_within_10m": 1,
+    "spatial_drift_records_count": 1
+  }
+}

@@ -1,0 +1,1483 @@
+{
+  "metadata": {
+    "title": "KSHETRA Classical Machine Learning Suite",
+    "total_samples": 1500,
+    "training_date": "2026-11-22",
+    "source": "Sentinel-2 Multi-Spectral Tiles (Harmonized Indian Survey Grounding)",
+    "license": "Open Data / Creative Commons"
+  },
+  "models": {
+    "linear_regression": {
+      "name": "Linear Regression",
+      "syllabus_category": "Supervised Learning \u2014 Regression",
+      "layman_question": "How much greenery covers this parcel?",
+      "plain_explanation": "Estimates the percentage of lush vegetation on a parcel by calculating how strongly chlorophyll in plants reflects green wavelengths compared to red and blue light.",
+      "technical_summary": "Ordinary Least Squares (OLS) regression mapping 6 optical reflectance and textural features to continuous vegetation coverage percentage (0\u2013100%).",
+      "target": "vegetation_pct",
+      "features": [
+        "mean_red",
+        "mean_green",
+        "mean_blue",
+        "green_red_diff",
+        "brightness",
+        "std_green"
+      ],
+      "metrics": {
+        "mae": 7.65,
+        "rmse": 10.14,
+        "r2_score": 0.1953,
+        "train_samples": 1200,
+        "test_samples": 300
+      },
+      "coefficients": {
+        "mean_red": -0.6469,
+        "mean_green": 0.6,
+        "mean_blue": -2.0238,
+        "green_red_diff": 2.4097,
+        "brightness": -0.711,
+        "std_green": 1.4693
+      },
+      "intercept": 8.1042,
+      "scatter_preview": [
+        {
+          "actual": 0.12,
+          "predicted": 2.79,
+          "error": 2.67
+        },
+        {
+          "actual": 1.03,
+          "predicted": 5.49,
+          "error": 4.46
+        },
+        {
+          "actual": 0.66,
+          "predicted": 6.62,
+          "error": 5.96
+        },
+        {
+          "actual": 0.0,
+          "predicted": 3.44,
+          "error": 3.44
+        },
+        {
+          "actual": 1.54,
+          "predicted": 7.27,
+          "error": 5.73
+        },
+        {
+          "actual": 1.44,
+          "predicted": 4.92,
+          "error": 3.48
+        },
+        {
+          "actual": 8.08,
+          "predicted": 2.9,
+          "error": 5.18
+        },
+        {
+          "actual": 0.22,
+          "predicted": 5.02,
+          "error": 4.8
+        },
+        {
+          "actual": 0.56,
+          "predicted": 5.61,
+          "error": 5.04
+        },
+        {
+          "actual": 6.98,
+          "predicted": 5.47,
+          "error": 1.51
+        },
+        {
+          "actual": 0.27,
+          "predicted": 8.3,
+          "error": 8.03
+        },
+        {
+          "actual": 2.78,
+          "predicted": 3.29,
+          "error": 0.5
+        },
+        {
+          "actual": 33.33,
+          "predicted": 8.7,
+          "error": 24.63
+        },
+        {
+          "actual": 0.0,
+          "predicted": 6.34,
+          "error": 6.34
+        },
+        {
+          "actual": 10.3,
+          "predicted": 10.36,
+          "error": 0.06
+        },
+        {
+          "actual": 12.23,
+          "predicted": 8.59,
+          "error": 3.64
+        },
+        {
+          "actual": 25.98,
+          "predicted": 13.35,
+          "error": 12.63
+        },
+        {
+          "actual": 4.74,
+          "predicted": 7.79,
+          "error": 3.05
+        },
+        {
+          "actual": 7.37,
+          "predicted": 7.35,
+          "error": 0.03
+        },
+        {
+          "actual": 0.29,
+          "predicted": 4.35,
+          "error": 4.05
+        },
+        {
+          "actual": 34.13,
+          "predicted": 8.22,
+          "error": 25.91
+        },
+        {
+          "actual": 0.61,
+          "predicted": 8.57,
+          "error": 7.96
+        },
+        {
+          "actual": 33.25,
+          "predicted": 8.48,
+          "error": 24.77
+        },
+        {
+          "actual": 34.08,
+          "predicted": 11.28,
+          "error": 22.8
+        },
+        {
+          "actual": 5.37,
+          "predicted": 0.0,
+          "error": 5.37
+        },
+        {
+          "actual": 1.44,
+          "predicted": 6.67,
+          "error": 5.23
+        },
+        {
+          "actual": 2.61,
+          "predicted": 9.15,
+          "error": 6.54
+        },
+        {
+          "actual": 1.39,
+          "predicted": 6.43,
+          "error": 5.04
+        },
+        {
+          "actual": 18.87,
+          "predicted": 11.39,
+          "error": 7.48
+        },
+        {
+          "actual": 8.11,
+          "predicted": 11.09,
+          "error": 2.98
+        },
+        {
+          "actual": 0.71,
+          "predicted": 6.53,
+          "error": 5.82
+        },
+        {
+          "actual": 12.01,
+          "predicted": 10.44,
+          "error": 1.57
+        },
+        {
+          "actual": 3.0,
+          "predicted": 10.08,
+          "error": 7.08
+        },
+        {
+          "actual": 0.22,
+          "predicted": 0.0,
+          "error": 0.22
+        },
+        {
+          "actual": 1.03,
+          "predicted": 0.0,
+          "error": 1.03
+        },
+        {
+          "actual": 1.32,
+          "predicted": 8.96,
+          "error": 7.65
+        },
+        {
+          "actual": 25.54,
+          "predicted": 12.16,
+          "error": 13.38
+        },
+        {
+          "actual": 22.56,
+          "predicted": 9.97,
+          "error": 12.59
+        },
+        {
+          "actual": 0.05,
+          "predicted": 8.18,
+          "error": 8.14
+        },
+        {
+          "actual": 13.35,
+          "predicted": 10.77,
+          "error": 2.58
+        },
+        {
+          "actual": 0.39,
+          "predicted": 3.01,
+          "error": 2.62
+        },
+        {
+          "actual": 2.86,
+          "predicted": 6.78,
+          "error": 3.92
+        },
+        {
+          "actual": 28.25,
+          "predicted": 12.28,
+          "error": 15.97
+        },
+        {
+          "actual": 9.62,
+          "predicted": 9.86,
+          "error": 0.24
+        },
+        {
+          "actual": 17.55,
+          "predicted": 13.48,
+          "error": 4.08
+        },
+        {
+          "actual": 7.62,
+          "predicted": 10.04,
+          "error": 2.42
+        },
+        {
+          "actual": 0.22,
+          "predicted": 5.22,
+          "error": 5.0
+        },
+        {
+          "actual": 10.86,
+          "predicted": 1.33,
+          "error": 9.53
+        },
+        {
+          "actual": 36.94,
+          "predicted": 7.49,
+          "error": 29.45
+        },
+        {
+          "actual": 1.86,
+          "predicted": 15.83,
+          "error": 13.98
+        }
+      ]
+    },
+    "svm_classifier": {
+      "name": "Support Vector Machine (RBF)",
+      "syllabus_category": "Supervised Learning \u2014 Multi-Class Classification",
+      "layman_question": "What primary type of ground exists at this location?",
+      "plain_explanation": "Identifies whether the land is primarily urban construction, active farmland, dense trees, bare soil, or water by finding the optimal geometric boundary between spectral signatures.",
+      "technical_summary": "Support Vector Classifier with Radial Basis Function (RBF) kernel with probabilistic calibration (Platt scaling) classifying 7 land cover classes.",
+      "target": "dominant_class",
+      "class_labels": {
+        "0": "Water Bodies",
+        "1": "Trees & Canopy",
+        "2": "Flooded Vegetation",
+        "3": "Crops & Agriculture",
+        "4": "Built-up & Urban",
+        "5": "Bare Soil",
+        "6": "Reflective / Other"
+      },
+      "features": [
+        "mean_red",
+        "mean_green",
+        "mean_blue",
+        "std_red",
+        "std_green",
+        "std_blue",
+        "green_red_diff",
+        "brightness",
+        "color_variance"
+      ],
+      "metrics": {
+        "accuracy": 0.7167,
+        "precision_weighted": 0.6852,
+        "recall_weighted": 0.7167,
+        "f1_weighted": 0.6831,
+        "support_vectors_count": 739,
+        "train_samples": 1200,
+        "test_samples": 300
+      },
+      "per_class": {
+        "Crops & Agriculture": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "Built-up & Urban": {
+          "precision": 0.5,
+          "recall": 0.069,
+          "f1": 0.121,
+          "support": 29
+        },
+        "Bare Soil": {
+          "precision": 0.578,
+          "recall": 0.656,
+          "f1": 0.615,
+          "support": 96
+        },
+        "Reflective / Other": {
+          "precision": 0.802,
+          "recall": 0.888,
+          "f1": 0.843,
+          "support": 169
+        },
+        "Class 7": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "Crops & Agriculture",
+          "Built-up & Urban",
+          "Bare Soil",
+          "Reflective / Other",
+          "7"
+        ],
+        "matrix": [
+          [
+            0,
+            0,
+            3,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            25,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            63,
+            33,
+            0
+          ],
+          [
+            0,
+            1,
+            18,
+            150,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "knn_finder": {
+      "name": "K-Nearest Neighbors (KNN)",
+      "syllabus_category": "Supervised / Instance-Based Learning \u2014 Similarity Search",
+      "layman_question": "Where else in India can I find land that looks and behaves just like this?",
+      "plain_explanation": "Compares this land's color, vegetation, and soil characteristics against 1,500 verified parcels across India to discover the closest matches.",
+      "technical_summary": "Non-parametric instance-based similarity engine using normalized multi-dimensional Euclidean distance in an 8-dimensional spectral-environmental feature space.",
+      "features": [
+        "mean_red",
+        "mean_green",
+        "mean_blue",
+        "green_red_diff",
+        "brightness",
+        "vegetation_pct",
+        "built_up_pct",
+        "soil_pct"
+      ],
+      "default_k": 5,
+      "metric": "Standardized Euclidean",
+      "total_catalog_size": 1500
+    },
+    "dbscan_clustering": {
+      "name": "DBSCAN Clustering",
+      "syllabus_category": "Unsupervised Learning \u2014 Density-Based Spatial Clustering",
+      "layman_question": "Does this land belong to a common natural zone or is it an unusual anomaly?",
+      "plain_explanation": "Groups parcels with similar natural conditions into regional land clusters and flags unique parcels (anomalies or outliers) that do not fit standard patterns.",
+      "technical_summary": "Density-Based Spatial Clustering of Applications with Noise (DBSCAN) using hyperspherical neighborhood density parameter epsilon (eps) and core sample threshold min_samples.",
+      "features": [
+        "latitude",
+        "longitude",
+        "vegetation_pct",
+        "built_up_pct"
+      ],
+      "parameters": {
+        "eps": 0.45,
+        "min_samples": 6
+      },
+      "metrics": {
+        "clusters_discovered": 5,
+        "noise_points": 404,
+        "noise_pct": 26.9,
+        "total_samples": 1500
+      },
+      "clusters": {
+        "Spectral Anomalies / Outliers": {
+          "cluster_id": -1,
+          "size": 404,
+          "pct_of_dataset": 26.9,
+          "avg_vegetation_pct": 22.7,
+          "avg_built_up_pct": 24.0,
+          "avg_soil_pct": 31.7,
+          "center_lat": 21.0584,
+          "center_lon": 80.3764,
+          "dominant_land_type": "Bare Soil"
+        },
+        "Cluster #0": {
+          "cluster_id": 0,
+          "size": 1058,
+          "pct_of_dataset": 70.5,
+          "avg_vegetation_pct": 2.6,
+          "avg_built_up_pct": 5.5,
+          "avg_soil_pct": 26.6,
+          "center_lat": 21.2961,
+          "center_lon": 80.6136,
+          "dominant_land_type": "Reflective / Other"
+        },
+        "Cluster #1": {
+          "cluster_id": 1,
+          "size": 7,
+          "pct_of_dataset": 0.5,
+          "avg_vegetation_pct": 12.1,
+          "avg_built_up_pct": 27.3,
+          "avg_soil_pct": 34.7,
+          "center_lat": 10.6597,
+          "center_lon": 79.3941,
+          "dominant_land_type": "Bare Soil"
+        },
+        "Cluster #2": {
+          "cluster_id": 2,
+          "size": 6,
+          "pct_of_dataset": 0.4,
+          "avg_vegetation_pct": 13.8,
+          "avg_built_up_pct": 10.7,
+          "avg_soil_pct": 41.4,
+          "center_lat": 20.3455,
+          "center_lon": 82.0772,
+          "dominant_land_type": "Bare Soil"
+        },
+        "Cluster #3": {
+          "cluster_id": 3,
+          "size": 19,
+          "pct_of_dataset": 1.3,
+          "avg_vegetation_pct": 3.9,
+          "avg_built_up_pct": 20.1,
+          "avg_soil_pct": 43.7,
+          "center_lat": 22.5412,
+          "center_lon": 84.6205,
+          "dominant_land_type": "Bare Soil"
+        },
+        "Cluster #4": {
+          "cluster_id": 4,
+          "size": 6,
+          "pct_of_dataset": 0.4,
+          "avg_vegetation_pct": 14.1,
+          "avg_built_up_pct": 18.3,
+          "avg_soil_pct": 43.8,
+          "center_lat": 23.0441,
+          "center_lon": 88.8273,
+          "dominant_land_type": "Bare Soil"
+        }
+      },
+      "scatter_preview": [
+        {
+          "sample_id": 0,
+          "lat": 8.4833,
+          "lon": 76.9709,
+          "vegetation_pct": 18.0,
+          "built_up_pct": 16.7,
+          "cluster": -1
+        },
+        {
+          "sample_id": 1,
+          "lat": 8.6722,
+          "lon": 78.1237,
+          "vegetation_pct": 0.2,
+          "built_up_pct": 0.6,
+          "cluster": 0
+        },
+        {
+          "sample_id": 2,
+          "lat": 8.7261,
+          "lon": 78.1394,
+          "vegetation_pct": 0.2,
+          "built_up_pct": 1.4,
+          "cluster": 0
+        },
+        {
+          "sample_id": 3,
+          "lat": 8.7711,
+          "lon": 78.1261,
+          "vegetation_pct": 0.0,
+          "built_up_pct": 0.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 4,
+          "lat": 8.7982,
+          "lon": 77.7905,
+          "vegetation_pct": 0.0,
+          "built_up_pct": 0.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 5,
+          "lat": 8.8925,
+          "lon": 76.5907,
+          "vegetation_pct": 11.5,
+          "built_up_pct": 14.9,
+          "cluster": -1
+        },
+        {
+          "sample_id": 6,
+          "lat": 9.0095,
+          "lon": 78.2498,
+          "vegetation_pct": 28.0,
+          "built_up_pct": 25.9,
+          "cluster": -1
+        },
+        {
+          "sample_id": 7,
+          "lat": 9.014,
+          "lon": 76.6754,
+          "vegetation_pct": 0.1,
+          "built_up_pct": 0.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 8,
+          "lat": 9.0366,
+          "lon": 76.6346,
+          "vegetation_pct": 27.0,
+          "built_up_pct": 21.7,
+          "cluster": -1
+        },
+        {
+          "sample_id": 9,
+          "lat": 9.1533,
+          "lon": 78.1164,
+          "vegetation_pct": 7.9,
+          "built_up_pct": 20.8,
+          "cluster": -1
+        },
+        {
+          "sample_id": 10,
+          "lat": 9.1749,
+          "lon": 78.64,
+          "vegetation_pct": 16.0,
+          "built_up_pct": 15.8,
+          "cluster": -1
+        },
+        {
+          "sample_id": 11,
+          "lat": 9.311,
+          "lon": 77.7514,
+          "vegetation_pct": 0.1,
+          "built_up_pct": 0.9,
+          "cluster": 0
+        },
+        {
+          "sample_id": 12,
+          "lat": 9.3602,
+          "lon": 76.6912,
+          "vegetation_pct": 30.6,
+          "built_up_pct": 1.8,
+          "cluster": -1
+        },
+        {
+          "sample_id": 13,
+          "lat": 9.4131,
+          "lon": 76.526,
+          "vegetation_pct": 5.9,
+          "built_up_pct": 4.9,
+          "cluster": 0
+        },
+        {
+          "sample_id": 14,
+          "lat": 9.5404,
+          "lon": 76.3928,
+          "vegetation_pct": 1.5,
+          "built_up_pct": 1.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 15,
+          "lat": 9.5445,
+          "lon": 76.3767,
+          "vegetation_pct": 24.9,
+          "built_up_pct": 34.9,
+          "cluster": -1
+        },
+        {
+          "sample_id": 16,
+          "lat": 9.5625,
+          "lon": 76.358,
+          "vegetation_pct": 0.6,
+          "built_up_pct": 1.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 17,
+          "lat": 9.581,
+          "lon": 76.3809,
+          "vegetation_pct": 0.1,
+          "built_up_pct": 0.2,
+          "cluster": 0
+        },
+        {
+          "sample_id": 18,
+          "lat": 9.6524,
+          "lon": 76.3872,
+          "vegetation_pct": 2.3,
+          "built_up_pct": 10.6,
+          "cluster": 0
+        },
+        {
+          "sample_id": 19,
+          "lat": 9.657,
+          "lon": 76.7304,
+          "vegetation_pct": 1.1,
+          "built_up_pct": 1.3,
+          "cluster": 0
+        },
+        {
+          "sample_id": 20,
+          "lat": 9.8953,
+          "lon": 77.0502,
+          "vegetation_pct": 22.7,
+          "built_up_pct": 20.7,
+          "cluster": -1
+        },
+        {
+          "sample_id": 21,
+          "lat": 9.9762,
+          "lon": 78.5622,
+          "vegetation_pct": 15.6,
+          "built_up_pct": 26.6,
+          "cluster": 1
+        },
+        {
+          "sample_id": 22,
+          "lat": 9.9852,
+          "lon": 76.5691,
+          "vegetation_pct": 25.9,
+          "built_up_pct": 8.4,
+          "cluster": -1
+        },
+        {
+          "sample_id": 23,
+          "lat": 10.0122,
+          "lon": 76.3061,
+          "vegetation_pct": 5.8,
+          "built_up_pct": 15.6,
+          "cluster": 0
+        },
+        {
+          "sample_id": 24,
+          "lat": 10.0392,
+          "lon": 76.2987,
+          "vegetation_pct": 1.5,
+          "built_up_pct": 3.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 25,
+          "lat": 10.0663,
+          "lon": 76.1999,
+          "vegetation_pct": 0.0,
+          "built_up_pct": 0.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 26,
+          "lat": 10.0706,
+          "lon": 76.3016,
+          "vegetation_pct": 0.1,
+          "built_up_pct": 1.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 27,
+          "lat": 10.1336,
+          "lon": 76.504,
+          "vegetation_pct": 3.6,
+          "built_up_pct": 12.2,
+          "cluster": 0
+        },
+        {
+          "sample_id": 28,
+          "lat": 10.1606,
+          "lon": 76.3869,
+          "vegetation_pct": 31.5,
+          "built_up_pct": 27.5,
+          "cluster": -1
+        },
+        {
+          "sample_id": 29,
+          "lat": 10.2371,
+          "lon": 76.2452,
+          "vegetation_pct": 0.5,
+          "built_up_pct": 0.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 30,
+          "lat": 10.286,
+          "lon": 79.8033,
+          "vegetation_pct": 2.0,
+          "built_up_pct": 2.3,
+          "cluster": 0
+        },
+        {
+          "sample_id": 31,
+          "lat": 10.2956,
+          "lon": 76.7805,
+          "vegetation_pct": 0.7,
+          "built_up_pct": 0.4,
+          "cluster": 0
+        },
+        {
+          "sample_id": 32,
+          "lat": 10.3225,
+          "lon": 79.5647,
+          "vegetation_pct": 29.1,
+          "built_up_pct": 28.2,
+          "cluster": -1
+        },
+        {
+          "sample_id": 33,
+          "lat": 10.3584,
+          "lon": 79.5749,
+          "vegetation_pct": 0.3,
+          "built_up_pct": 1.1,
+          "cluster": 0
+        },
+        {
+          "sample_id": 34,
+          "lat": 10.4709,
+          "lon": 78.8904,
+          "vegetation_pct": 30.5,
+          "built_up_pct": 23.6,
+          "cluster": -1
+        },
+        {
+          "sample_id": 35,
+          "lat": 10.5788,
+          "lon": 79.8192,
+          "vegetation_pct": 0.2,
+          "built_up_pct": 0.2,
+          "cluster": 0
+        },
+        {
+          "sample_id": 36,
+          "lat": 10.5967,
+          "lon": 76.5438,
+          "vegetation_pct": 1.6,
+          "built_up_pct": 1.8,
+          "cluster": 0
+        },
+        {
+          "sample_id": 37,
+          "lat": 10.7586,
+          "lon": 76.2779,
+          "vegetation_pct": 1.7,
+          "built_up_pct": 3.2,
+          "cluster": 0
+        },
+        {
+          "sample_id": 38,
+          "lat": 10.7766,
+          "lon": 79.1479,
+          "vegetation_pct": 1.2,
+          "built_up_pct": 1.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 39,
+          "lat": 10.8126,
+          "lon": 79.8395,
+          "vegetation_pct": 3.3,
+          "built_up_pct": 2.1,
+          "cluster": 0
+        },
+        {
+          "sample_id": 40,
+          "lat": 10.8216,
+          "lon": 79.851,
+          "vegetation_pct": 10.2,
+          "built_up_pct": 11.2,
+          "cluster": 0
+        },
+        {
+          "sample_id": 41,
+          "lat": 10.8261,
+          "lon": 79.8476,
+          "vegetation_pct": 0.2,
+          "built_up_pct": 0.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 42,
+          "lat": 10.8305,
+          "lon": 79.8489,
+          "vegetation_pct": 3.9,
+          "built_up_pct": 7.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 43,
+          "lat": 10.8351,
+          "lon": 79.8455,
+          "vegetation_pct": 22.1,
+          "built_up_pct": 17.7,
+          "cluster": -1
+        },
+        {
+          "sample_id": 44,
+          "lat": 10.8351,
+          "lon": 79.85,
+          "vegetation_pct": 0.8,
+          "built_up_pct": 1.9,
+          "cluster": 0
+        },
+        {
+          "sample_id": 45,
+          "lat": 10.8395,
+          "lon": 79.8329,
+          "vegetation_pct": 2.8,
+          "built_up_pct": 18.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 46,
+          "lat": 10.8396,
+          "lon": 79.8512,
+          "vegetation_pct": 4.0,
+          "built_up_pct": 4.7,
+          "cluster": 0
+        },
+        {
+          "sample_id": 47,
+          "lat": 10.8396,
+          "lon": 79.8558,
+          "vegetation_pct": 23.2,
+          "built_up_pct": 25.6,
+          "cluster": -1
+        },
+        {
+          "sample_id": 48,
+          "lat": 10.8444,
+          "lon": 79.8521,
+          "vegetation_pct": 33.9,
+          "built_up_pct": 17.4,
+          "cluster": -1
+        },
+        {
+          "sample_id": 49,
+          "lat": 10.8756,
+          "lon": 79.7829,
+          "vegetation_pct": 7.4,
+          "built_up_pct": 6.3,
+          "cluster": 0
+        },
+        {
+          "sample_id": 50,
+          "lat": 10.889,
+          "lon": 79.8508,
+          "vegetation_pct": 11.8,
+          "built_up_pct": 27.3,
+          "cluster": 1
+        },
+        {
+          "sample_id": 51,
+          "lat": 10.889,
+          "lon": 79.8462,
+          "vegetation_pct": 0.3,
+          "built_up_pct": 1.3,
+          "cluster": 0
+        },
+        {
+          "sample_id": 52,
+          "lat": 10.8936,
+          "lon": 79.7924,
+          "vegetation_pct": 0.6,
+          "built_up_pct": 0.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 53,
+          "lat": 10.9115,
+          "lon": 79.8384,
+          "vegetation_pct": 28.1,
+          "built_up_pct": 42.7,
+          "cluster": -1
+        },
+        {
+          "sample_id": 54,
+          "lat": 10.925,
+          "lon": 79.8375,
+          "vegetation_pct": 17.7,
+          "built_up_pct": 32.1,
+          "cluster": -1
+        },
+        {
+          "sample_id": 55,
+          "lat": 10.943,
+          "lon": 79.8103,
+          "vegetation_pct": 1.4,
+          "built_up_pct": 4.3,
+          "cluster": 0
+        },
+        {
+          "sample_id": 56,
+          "lat": 10.9432,
+          "lon": 79.8286,
+          "vegetation_pct": 1.3,
+          "built_up_pct": 3.7,
+          "cluster": 0
+        },
+        {
+          "sample_id": 57,
+          "lat": 10.9565,
+          "lon": 79.3605,
+          "vegetation_pct": 9.2,
+          "built_up_pct": 30.6,
+          "cluster": 1
+        },
+        {
+          "sample_id": 58,
+          "lat": 10.9608,
+          "lon": 78.354,
+          "vegetation_pct": 0.6,
+          "built_up_pct": 1.2,
+          "cluster": 0
+        },
+        {
+          "sample_id": 59,
+          "lat": 10.97,
+          "lon": 79.79,
+          "vegetation_pct": 3.1,
+          "built_up_pct": 17.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 60,
+          "lat": 10.9924,
+          "lon": 76.0125,
+          "vegetation_pct": 20.1,
+          "built_up_pct": 35.6,
+          "cluster": -1
+        },
+        {
+          "sample_id": 61,
+          "lat": 11.0011,
+          "lon": 79.2212,
+          "vegetation_pct": 5.5,
+          "built_up_pct": 0.1,
+          "cluster": 0
+        },
+        {
+          "sample_id": 62,
+          "lat": 11.1543,
+          "lon": 76.9391,
+          "vegetation_pct": 0.7,
+          "built_up_pct": 4.8,
+          "cluster": 0
+        },
+        {
+          "sample_id": 63,
+          "lat": 11.4151,
+          "lon": 77.0412,
+          "vegetation_pct": 5.5,
+          "built_up_pct": 2.3,
+          "cluster": 0
+        },
+        {
+          "sample_id": 64,
+          "lat": 11.4421,
+          "lon": 77.6721,
+          "vegetation_pct": 7.4,
+          "built_up_pct": 1.4,
+          "cluster": 0
+        },
+        {
+          "sample_id": 65,
+          "lat": 11.604,
+          "lon": 77.8274,
+          "vegetation_pct": 15.8,
+          "built_up_pct": 21.4,
+          "cluster": -1
+        },
+        {
+          "sample_id": 66,
+          "lat": 11.8736,
+          "lon": 79.8195,
+          "vegetation_pct": 0.0,
+          "built_up_pct": 0.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 67,
+          "lat": 11.8828,
+          "lon": 75.3788,
+          "vegetation_pct": 35.1,
+          "built_up_pct": 44.9,
+          "cluster": -1
+        },
+        {
+          "sample_id": 68,
+          "lat": 11.9096,
+          "lon": 77.7531,
+          "vegetation_pct": 16.1,
+          "built_up_pct": 21.8,
+          "cluster": -1
+        },
+        {
+          "sample_id": 69,
+          "lat": 11.9187,
+          "lon": 79.8144,
+          "vegetation_pct": 0.2,
+          "built_up_pct": 0.9,
+          "cluster": 0
+        },
+        {
+          "sample_id": 70,
+          "lat": 11.9188,
+          "lon": 79.8281,
+          "vegetation_pct": 10.3,
+          "built_up_pct": 4.7,
+          "cluster": 0
+        },
+        {
+          "sample_id": 71,
+          "lat": 11.9281,
+          "lon": 79.7299,
+          "vegetation_pct": 0.8,
+          "built_up_pct": 0.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 72,
+          "lat": 11.9726,
+          "lon": 79.6648,
+          "vegetation_pct": 4.2,
+          "built_up_pct": 5.4,
+          "cluster": 0
+        },
+        {
+          "sample_id": 73,
+          "lat": 11.9779,
+          "lon": 79.6568,
+          "vegetation_pct": 15.9,
+          "built_up_pct": 24.4,
+          "cluster": 1
+        },
+        {
+          "sample_id": 74,
+          "lat": 11.9863,
+          "lon": 75.2834,
+          "vegetation_pct": 2.0,
+          "built_up_pct": 5.4,
+          "cluster": 0
+        },
+        {
+          "sample_id": 75,
+          "lat": 12.0002,
+          "lon": 79.4981,
+          "vegetation_pct": 0.1,
+          "built_up_pct": 0.9,
+          "cluster": 0
+        },
+        {
+          "sample_id": 76,
+          "lat": 12.0219,
+          "lon": 75.2291,
+          "vegetation_pct": 13.4,
+          "built_up_pct": 12.4,
+          "cluster": -1
+        },
+        {
+          "sample_id": 77,
+          "lat": 12.0311,
+          "lon": 75.3006,
+          "vegetation_pct": 22.9,
+          "built_up_pct": 28.3,
+          "cluster": -1
+        },
+        {
+          "sample_id": 78,
+          "lat": 12.0536,
+          "lon": 75.2334,
+          "vegetation_pct": 0.2,
+          "built_up_pct": 0.7,
+          "cluster": 0
+        },
+        {
+          "sample_id": 79,
+          "lat": 12.0536,
+          "lon": 75.2288,
+          "vegetation_pct": 24.8,
+          "built_up_pct": 36.5,
+          "cluster": -1
+        },
+        {
+          "sample_id": 80,
+          "lat": 12.0581,
+          "lon": 75.2301,
+          "vegetation_pct": 9.6,
+          "built_up_pct": 12.4,
+          "cluster": -1
+        },
+        {
+          "sample_id": 81,
+          "lat": 12.0672,
+          "lon": 75.251,
+          "vegetation_pct": 2.0,
+          "built_up_pct": 13.8,
+          "cluster": 0
+        },
+        {
+          "sample_id": 82,
+          "lat": 12.0896,
+          "lon": 75.2573,
+          "vegetation_pct": 4.5,
+          "built_up_pct": 6.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 83,
+          "lat": 12.1256,
+          "lon": 75.3318,
+          "vegetation_pct": 31.0,
+          "built_up_pct": 36.6,
+          "cluster": -1
+        },
+        {
+          "sample_id": 84,
+          "lat": 12.265,
+          "lon": 76.5494,
+          "vegetation_pct": 0.2,
+          "built_up_pct": 0.3,
+          "cluster": 0
+        },
+        {
+          "sample_id": 85,
+          "lat": 12.4726,
+          "lon": 74.9875,
+          "vegetation_pct": 1.4,
+          "built_up_pct": 4.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 86,
+          "lat": 12.5657,
+          "lon": 76.6378,
+          "vegetation_pct": 15.1,
+          "built_up_pct": 6.4,
+          "cluster": -1
+        },
+        {
+          "sample_id": 87,
+          "lat": 12.6382,
+          "lon": 74.9179,
+          "vegetation_pct": 3.9,
+          "built_up_pct": 3.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 88,
+          "lat": 12.728,
+          "lon": 80.0053,
+          "vegetation_pct": 0.4,
+          "built_up_pct": 0.7,
+          "cluster": 0
+        },
+        {
+          "sample_id": 89,
+          "lat": 12.8135,
+          "lon": 76.0301,
+          "vegetation_pct": 24.6,
+          "built_up_pct": 25.0,
+          "cluster": -1
+        },
+        {
+          "sample_id": 90,
+          "lat": 12.8226,
+          "lon": 76.0376,
+          "vegetation_pct": 0.1,
+          "built_up_pct": 0.2,
+          "cluster": 0
+        },
+        {
+          "sample_id": 91,
+          "lat": 12.9439,
+          "lon": 80.1991,
+          "vegetation_pct": 2.3,
+          "built_up_pct": 18.1,
+          "cluster": 0
+        },
+        {
+          "sample_id": 92,
+          "lat": 12.9709,
+          "lon": 80.217,
+          "vegetation_pct": 0.3,
+          "built_up_pct": 0.2,
+          "cluster": 0
+        },
+        {
+          "sample_id": 93,
+          "lat": 13.0054,
+          "lon": 80.062,
+          "vegetation_pct": 23.2,
+          "built_up_pct": 28.9,
+          "cluster": -1
+        },
+        {
+          "sample_id": 94,
+          "lat": 13.0077,
+          "lon": 77.6166,
+          "vegetation_pct": 25.1,
+          "built_up_pct": 18.9,
+          "cluster": -1
+        },
+        {
+          "sample_id": 95,
+          "lat": 13.0115,
+          "lon": 80.0774,
+          "vegetation_pct": 0.1,
+          "built_up_pct": 0.4,
+          "cluster": 0
+        },
+        {
+          "sample_id": 96,
+          "lat": 13.0474,
+          "lon": 80.1909,
+          "vegetation_pct": 0.6,
+          "built_up_pct": 3.8,
+          "cluster": 0
+        },
+        {
+          "sample_id": 97,
+          "lat": 13.0699,
+          "lon": 79.2381,
+          "vegetation_pct": 22.4,
+          "built_up_pct": 53.7,
+          "cluster": -1
+        },
+        {
+          "sample_id": 98,
+          "lat": 13.0741,
+          "lon": 79.7974,
+          "vegetation_pct": 43.0,
+          "built_up_pct": 24.4,
+          "cluster": -1
+        },
+        {
+          "sample_id": 99,
+          "lat": 13.0925,
+          "lon": 80.3025,
+          "vegetation_pct": 1.0,
+          "built_up_pct": 2.1,
+          "cluster": 0
+        },
+        {
+          "sample_id": 100,
+          "lat": 13.1462,
+          "lon": 79.5075,
+          "vegetation_pct": 22.1,
+          "built_up_pct": 12.6,
+          "cluster": -1
+        },
+        {
+          "sample_id": 101,
+          "lat": 13.2269,
+          "lon": 80.3186,
+          "vegetation_pct": 1.2,
+          "built_up_pct": 14.4,
+          "cluster": 0
+        },
+        {
+          "sample_id": 102,
+          "lat": 13.2588,
+          "lon": 79.9922,
+          "vegetation_pct": 2.6,
+          "built_up_pct": 13.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 103,
+          "lat": 13.3261,
+          "lon": 78.3001,
+          "vegetation_pct": 5.2,
+          "built_up_pct": 4.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 104,
+          "lat": 13.3306,
+          "lon": 76.7856,
+          "vegetation_pct": 22.4,
+          "built_up_pct": 15.9,
+          "cluster": -1
+        },
+        {
+          "sample_id": 105,
+          "lat": 13.56,
+          "lon": 78.4967,
+          "vegetation_pct": 0.1,
+          "built_up_pct": 0.2,
+          "cluster": 0
+        },
+        {
+          "sample_id": 106,
+          "lat": 13.6634,
+          "lon": 77.7166,
+          "vegetation_pct": 0.1,
+          "built_up_pct": 0.6,
+          "cluster": 0
+        },
+        {
+          "sample_id": 107,
+          "lat": 13.7221,
+          "lon": 80.0965,
+          "vegetation_pct": 1.6,
+          "built_up_pct": 8.3,
+          "cluster": 0
+        },
+        {
+          "sample_id": 108,
+          "lat": 13.7535,
+          "lon": 76.1722,
+          "vegetation_pct": 0.9,
+          "built_up_pct": 1.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 109,
+          "lat": 13.9829,
+          "lon": 80.1627,
+          "vegetation_pct": 7.6,
+          "built_up_pct": 6.8,
+          "cluster": 0
+        },
+        {
+          "sample_id": 110,
+          "lat": 14.3108,
+          "lon": 76.1212,
+          "vegetation_pct": 0.9,
+          "built_up_pct": 8.7,
+          "cluster": 0
+        },
+        {
+          "sample_id": 111,
+          "lat": 14.4279,
+          "lon": 78.2225,
+          "vegetation_pct": 0.0,
+          "built_up_pct": 0.0,
+          "cluster": 0
+        },
+        {
+          "sample_id": 112,
+          "lat": 14.5307,
+          "lon": 76.8328,
+          "vegetation_pct": 0.7,
+          "built_up_pct": 0.6,
+          "cluster": 0
+        },
+        {
+          "sample_id": 113,
+          "lat": 14.5313,
+          "lon": 74.3802,
+          "vegetation_pct": 4.3,
+          "built_up_pct": 0.1,
+          "cluster": 0
+        },
+        {
+          "sample_id": 114,
+          "lat": 14.5356,
+          "lon": 74.3633,
+          "vegetation_pct": 1.5,
+          "built_up_pct": 9.5,
+          "cluster": 0
+        },
+        {
+          "sample_id": 115,
+          "lat": 14.5731,
+          "lon": 79.8483,
+          "vegetation_pct": 1.4,
+          "built_up_pct": 4.1,
+          "cluster": 0
+        },
+        {
+          "sample_id": 116,
+          "lat": 14.7696,
+          "lon": 78.5487,
+          "vegetation_pct": 1.2,
+          "built_up_pct": 3.9,
+          "cluster": 0
+        },
+        {
+          "sample_id": 117,
+          "lat": 14.8954,
+          "lon": 74.9883,
+          "vegetation_pct": 1.6,
+          "built_up_pct": 15.6,
+          "cluster": 0
+        },
+        {
+          "sample_id": 118,
+          "lat": 14.9134,
+          "lon": 78.7638,
+          "vegetation_pct": 9.3,
+          "built_up_pct": 22.1,
+          "cluster": -1
+        },
+        {
+          "sample_id": 119,
+          "lat": 14.9629,
+          "lon": 78.0559,
+          "vegetation_pct": 0.1,
+          "built_up_pct": 0.2,
+          "cluster": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "milestone": "Phase 4 Step 4 \u2014 Semantic Calibration & Dataset Readiness Audit",
+  "readiness_verdict": "READY_FOR_LOCAL_REGIONAL_MODEL_DEVELOPMENT",
+  "readiness_score_pct": 85.0,
+  "visual_calibration": {
+    "generated_strips_count": 6,
+    "generated_files": [
+      "calibration_tile_00000_159984.png",
+      "calibration_tile_00010_118243.png",
+      "calibration_tile_00050_41685.png",
+      "calibration_tile_00100_97318.png",
+      "calibration_tile_00200_106442.png",
+      "calibration_tile_00500_128905.png"
+    ],
+    "legend_file": "tile_calibration_legend.png",
+    "palette_used": {
+      "class_1": [
+        0,
+        119,
+        182
+      ],
+      "class_2": [
+        45,
+        106,
+        79
+      ],
+      "class_3": [
+        72,
+        202,
+        228
+      ],
+      "class_4": [
+        116,
+        198,
+        157
+      ],
+      "class_5": [
+        255,
+        183,
+        3
+      ],
+      "class_6": [
+        203,
+        153,
+        126
+      ],
+      "class_7": [
+        157,
+        78,
+        221
+      ]
+    }
+  },
+  "spectral_signatures": {
+    "class_1": {
+      "class_id": 1,
+      "sampled_tiles_present": 163,
+      "mean_rgb": [
+        100.1,
+        121.0,
+        145.3
+      ],
+      "std_rgb": [
+        70.2,
+        80.5,
+        86.8
+      ],
+      "mean_brightness": 122.1,
+      "greenness_ratio": 0.49,
+      "color_description": "Blue-shifted"
+    },
+    "class_2": {
+      "class_id": 2,
+      "sampled_tiles_present": 192,
+      "mean_rgb": [
+        10.2,
+        38.8,
+        20.7
+      ],
+      "std_rgb": [
+        13.5,
+        37.5,
+        32.8
+      ],
+      "mean_brightness": 23.2,
+      "greenness_ratio": 1.26,
+      "color_description": "Green-dominated (Vegetative)"
+    },
+    "class_3": {
+      "class_id": 3,
+      "sampled_tiles_present": 289,
+      "mean_rgb": [
+        122.9,
+        132.3,
+        150.8
+      ],
+      "std_rgb": [
+        49.8,
+        51.5,
+        51.5
+      ],
+      "mean_brightness": 135.3,
+      "greenness_ratio": 0.48,
+      "color_description": "Blue-shifted"
+    },
+    "class_4": {
+      "class_id": 4,
+      "sampled_tiles_present": 290,
+      "mean_rgb": [
+        42.4,
+        55.1,
+        51.9
+      ],
+      "std_rgb": [
+        28.8,
+        28.7,
+        27.7
+      ],
+      "mean_brightness": 49.8,
+      "greenness_ratio": 0.58,
+      "color_description": "Green-dominated (Vegetative)"
+    },
+    "class_5": {
+      "class_id": 5,
+      "sampled_tiles_present": 300,
+      "mean_rgb": [
+        110.5,
+        108.2,
+        109.3
+      ],
+      "std_rgb": [
+        38.9,
+        32.7,
+        31.9
+      ],
+      "mean_brightness": 109.3,
+      "greenness_ratio": 0.49,
+      "color_description": "Red/Brown-shifted (Soil/Sand/Built)"
+    },
+    "class_6": {
+      "class_id": 6,
+      "sampled_tiles_present": 300,
+      "mean_rgb": [
+        156.1,
+        129.1,
+        125.6
+      ],
+      "std_rgb": [
+        24.6,
+        28.4,
+        28.1
+      ],
+      "mean_brightness": 136.9,
+      "greenness_ratio": 0.46,
+      "color_description": "Red/Brown-shifted (Soil/Sand/Built)"
+    },
+    "class_7": {
+      "class_id": 7,
+      "sampled_tiles_present": 267,
+      "mean_rgb": [
+        19.0,
+        35.5,
+        26.2
+      ],
+      "std_rgb": [
+        16.3,
+        25.7,
+        21.1
+      ],
+      "mean_brightness": 26.9,
+      "greenness_ratio": 0.79,
+      "color_description": "Green-dominated (Vegetative)"
+    }
+  },
+  "spatial_overlap_audit": {
+    "overlapping_points_count": 7,
+    "total_points": 968,
+    "verdict": "STATISTICALLY_AND_GEOGRAPHICALLY_INDEPENDENT. The CSV points represent a sparse Pan-India network (only 7 of 968 points intersect local tile footprints). They cannot be used as training supervision for the Parquet computer vision masks."
+  },
+  "class_imbalance_audit": {
+    "dominant_class": {
+      "class_id": 6,
+      "frequency_percentage": 47.742
+    },
+    "rarest_class": {
+      "class_id": 1,
+      "frequency_percentage": 1.185
+    },
+    "imbalance_ratio": 40.29,
+    "severity": "HIGH_IMBALANCE",
+    "training_risks": [
+      "Severe imbalance ratio of 40.3:1 between Class 6 and Class 1.",
+      "Standard Cross-Entropy Loss will suffer from minority class collapse.",
+      "Focal Loss or Inverse-Frequency Class Weighting is mandatory during model training."
+    ],
+    "recommended_loss_weights": {
+      "class_1": 0.778,
+      "class_2": 0.718,
+      "class_3": 0.16,
+      "class_4": 0.085,
+      "class_5": 0.036,
+      "class_6": 0.021,
+      "class_7": 0.224
+    }
+  },
+  "single_shard_audit": {
+    "current_shard": "train-00000-of-00007.parquet (Shard 0 of 7)",
+    "estimated_corpus_tiles": 213759,
+    "available_local_tiles": 30537,
+    "shard_percentage_of_corpus": 14.29,
+    "geographic_extent": {
+      "coordinate_system": "WGS 84 / UTM zone 43N",
+      "lat_bounds": [
+        27.94,
+        29.79
+      ],
+      "lon_bounds": [
+        76.02,
+        78.2
+      ],
+      "named_region": "Delhi-National Capital Region (NCR), Haryana, Rajasthan, Western UP",
+      "approximate_coverage_km": "180 km x 205 km"
+    },
+    "consequences_for_pand_shield_ai": [
+      "Regional Specialization: A model trained on Shard 0 will excel in semi-arid, alluvial plain, agricultural, and urban northern Indian terrain.",
+      "Zero Generalization to Unrepresented Ecosystems: Shard 0 contains no tropical rainforests (Western Ghats/Northeast), no coastal marine/mangrove terrain (Kerala/Sundarbans), and no alpine snow/rock (Himalayas).",
+      "Is it a Blocker for Phase 5 (Initial Training)? NO. 30,537 tiles (125 million labeled pixels) is more than sufficient for training and benchmarking state-of-the-art segmentation architectures locally.",
+      "Recommendation: Train the initial model on Shard 0 as the Delhi-NCR regional benchmark, while planning multi-shard ingestion for full national deployment."
+    ]
+  },
+  "data_leakage_audit": {
+    "total_points": 968,
+    "transition_counts": {
+      "0_to_0": 512,
+      "0_to_2": 267,
+      "1_to_1": 189
+    },
+    "data_leakage_risks": [
+      "Identical Coordinate Sampling: 967 points share identical coordinates between 2016 and 2024.",
+      "Naive Random K-Fold Splitting Failure: Splitting multi-year observations randomly would place identical geographic locations in both training and testing folds, inflating validation metrics through spatial autocorrelation.",
+      "Mandatory Splitting Strategy: Future ML tasks predicting land transformation MUST use Spatial Group K-Fold or Spatial Blocking (grouping by point_id or spatial grid cell) to guarantee zero spatial leakage."
+    ]
+  },
+  "verified_vs_unverified": {
+    "verified_facts": [
+      "Parquet dataset contains 30,537 pairs of (64,64,3) RGB images and (64,64) masks with CRS UTM 43N.",
+      "Masks strictly contain integer class IDs 1 through 7.",
+      "Class 6 is dominant (47.74%), Class 1 is rarest (1.18%). Imbalance ratio is 40.5:1.",
+      "Only 7 of the 968 national points overlap with the 30,537 Parquet tiles.",
+      "2016 vs 2024 points represent the same 968 locations (701 stable, 267 converted from 0 to 2)."
+    ],
+    "strictly_unverified": [
+      "Text semantic names for Classes 1 to 7: No ground truth class dictionary exists in the files. Names must NOT be fabricated prior to official benchmark calibration.",
+      "Semantics of CSV Class 0, 1, 2: Discrete categories representing land cover states, but without official label codebook."
+    ]
+  }
+}

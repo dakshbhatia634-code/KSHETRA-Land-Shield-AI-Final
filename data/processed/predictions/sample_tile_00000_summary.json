@@ -1,0 +1,92 @@
+{
+  "sample_name": "sample_tile_00000",
+  "inference_time_ms": 382.08,
+  "device": "cuda",
+  "checkpoint_epoch": 20,
+  "best_val_miou": 0.4839,
+  "class_breakdown": {
+    "class_1": {
+      "class_id": 1,
+      "class_name": "Class 1",
+      "pixel_count": 104,
+      "percentage": 2.54,
+      "color_rgb": [
+        0,
+        119,
+        182
+      ]
+    },
+    "class_2": {
+      "class_id": 2,
+      "class_name": "Class 2",
+      "pixel_count": 0,
+      "percentage": 0.0,
+      "color_rgb": [
+        45,
+        106,
+        79
+      ]
+    },
+    "class_3": {
+      "class_id": 3,
+      "class_name": "Class 3",
+      "pixel_count": 863,
+      "percentage": 21.07,
+      "color_rgb": [
+        72,
+        202,
+        228
+      ]
+    },
+    "class_4": {
+      "class_id": 4,
+      "class_name": "Class 4",
+      "pixel_count": 696,
+      "percentage": 16.99,
+      "color_rgb": [
+        116,
+        198,
+        157
+      ]
+    },
+    "class_5": {
+      "class_id": 5,
+      "class_name": "Class 5",
+      "pixel_count": 1881,
+      "percentage": 45.92,
+      "color_rgb": [
+        255,
+        183,
+        3
+      ]
+    },
+    "class_6": {
+      "class_id": 6,
+      "class_name": "Class 6",
+      "pixel_count": 475,
+      "percentage": 11.6,
+      "color_rgb": [
+        203,
+        153,
+        126
+      ]
+    },
+    "class_7": {
+      "class_id": 7,
+      "class_name": "Class 7",
+      "pixel_count": 77,
+      "percentage": 1.88,
+      "color_rgb": [
+        157,
+        78,
+        221
+      ]
+    }
+  },
+  "saved_files": {
+    "predicted_mask": "data\\processed\\predictions\\sample_tile_00000_predicted_mask.png",
+    "colorized_mask": "data\\processed\\predictions\\sample_tile_00000_colorized_mask.png",
+    "side_by_side": "data\\processed\\predictions\\sample_tile_00000_side_by_side.png",
+    "legend": "data\\processed\\predictions\\sample_tile_00000_legend.png"
+  }
+}

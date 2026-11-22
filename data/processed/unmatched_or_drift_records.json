@@ -1,0 +1,17 @@
+[
+  {
+    "point_id": "PT_0968",
+    "coords_2016": [
+      76.87743144028781,
+      30.68311561903436
+    ],
+    "coords_2024": [
+      76.87738335535985,
+      30.68317619199697
+    ],
+    "distance_meters": 8.1553,
+    "landcover_2016": 0,
+    "landcover_2024": 0,
+    "reason": "Points correspond to identical land feature sampled with slight GPS/pin placement offset."
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "execution_timestamp_utc": "2026-11-20T18:13:44.141647+00:00",
+  "harmonized_dataset": {
+    "file_parquet": "harmonized_points_2016_2024.parquet",
+    "file_csv": "harmonized_points_2016_2024.csv",
+    "total_rows": 968,
+    "columns": [
+      "point_id",
+      "longitude",
+      "latitude",
+      "longitude_2016",
+      "latitude_2016",
+      "longitude_2024",
+      "latitude_2024",
+      "spatial_drift_meters",
+      "match_type",
+      "system_index_2016",
+      "system_index_2024",
+      "landcover_2016",
+      "landcover_2024",
+      "transition_code",
+      "transition_category",
+      "is_stable"
+    ],
+    "transition_breakdown": {
+      "0_to_0": 512,
+      "0_to_2": 267,
+      "1_to_1": 189
+    },
+    "stable_count": 701,
+    "converted_count": 267,
+    "stability_rate_pct": 72.42
+  },
+  "satellite_dataset": {
+    "file": "train-00000-of-00007.parquet",
+    "total_tiles": 30537,
+    "image_shape": [
+      64,
+      64,
+      3
+    ],
+    "mask_shape": [
+      64,
+      64
+    ],
+    "classes_detected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "crs": [
+      "WGS 84 / UTM zone 43N|WGS 84"
+    ],
+    "pixel_scale": [
+      [
+        10.0,
+        10.0,
+        0.0
+      ]
+    ]
+  },
+  "safety_audit": {
+    "raw_data_modified": false,
+    "arbitrary_drops_count": 0,
+    "coordinate_precision_preserved": true
+  }
+}

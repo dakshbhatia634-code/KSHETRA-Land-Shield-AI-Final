@@ -1,0 +1,101 @@
+{
+  "preflight_verdict": "ALL_TESTS_PASSED",
+  "tests_passed_count": 8,
+  "total_tests": 8,
+  "device_used": "cuda",
+  "details": {
+    "test_1_device": {
+      "device": "cuda",
+      "cuda_available": true,
+      "status": "PASS"
+    },
+    "test_2_spatial_split": {
+      "train_tiles": 24449,
+      "val_tiles": 6088,
+      "spatial_block_size_km": 20.0,
+      "overlapping_tiles": 0,
+      "status": "PASS"
+    },
+    "test_3_sample_format": {
+      "sample_id": "159984.png",
+      "image_shape": [
+        3,
+        64,
+        64
+      ],
+      "mask_shape": [
+        64,
+        64
+      ],
+      "image_dtype": "torch.float32",
+      "mask_dtype": "torch.int64",
+      "status": "PASS"
+    },
+    "test_4_class_ids": {
+      "target_classes_found": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "zero_indexed_range": [
+        0,
+        6
+      ],
+      "status": "PASS"
+    },
+    "test_5_batching": {
+      "batch_images_shape": [
+        4,
+        3,
+        64,
+        64
+      ],
+      "batch_masks_shape": [
+        4,
+        64,
+        64
+      ],
+      "status": "PASS"
+    },
+    "test_6_forward_pass": {
+      "logits_shape": [
+        4,
+        7,
+        64,
+        64
+      ],
+      "decoded_preds_shape": [
+        4,
+        64,
+        64
+      ],
+      "trainable_parameters": 7763239,
+      "status": "PASS"
+    },
+    "test_7_loss_and_gradients": {
+      "computed_loss": 1.3978,
+      "loss_is_finite": true,
+      "gradients_verified": true,
+      "status": "PASS"
+    },
+    "test_8_metrics": {
+      "metrics_keys": [
+        "overall_accuracy",
+        "mean_iou",
+        "mean_dice",
+        "per_class_iou",
+        "per_class_dice",
+        "confusion_matrix"
+      ],
+      "confusion_matrix_shape": [
+        7,
+        7
+      ],
+      "status": "PASS"
+    }
+  }
+}

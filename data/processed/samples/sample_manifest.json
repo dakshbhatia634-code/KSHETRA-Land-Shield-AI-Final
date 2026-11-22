@@ -1,0 +1,67 @@
+[
+  {
+    "index": 0,
+    "filename": "sample_tile_00000.png",
+    "path": "data/processed/samples/sample_tile_00000.png",
+    "sample_id": "159984.png",
+    "description": "South Delhi NCR / Faridabad Agro-Urban Fringe",
+    "latitude": 28.40072,
+    "longitude": 77.35007,
+    "easting": 730240.0,
+    "northing": 3143840.0,
+    "coordinate_system": "WGS 84 / UTM zone 43N (EPSG:32643)",
+    "location_verified": true
+  },
+  {
+    "index": 10,
+    "filename": "sample_tile_00010.png",
+    "path": "data/processed/samples/sample_tile_00010.png",
+    "sample_id": "118243.png",
+    "description": "East NCR / Hindon-Yamuna Riparian Corridor",
+    "latitude": 28.76303,
+    "longitude": 77.73491,
+    "easting": 767040.0,
+    "northing": 3184800.0,
+    "coordinate_system": "WGS 84 / UTM zone 43N (EPSG:32643)",
+    "location_verified": true
+  },
+  {
+    "index": 50,
+    "filename": "sample_tile_00050.png",
+    "path": "data/processed/samples/sample_tile_00050.png",
+    "sample_id": "41685.png",
+    "description": "Upper Doab / Northern Canal Irrigated Zone",
+    "latitude": 29.44077,
+    "longitude": 77.62099,
+    "easting": 754240.0,
+    "northing": 3259680.0,
+    "coordinate_system": "WGS 84 / UTM zone 43N (EPSG:32643)",
+    "location_verified": true
+  },
+  {
+    "index": 100,
+    "filename": "sample_tile_00100.png",
+    "path": "data/processed/samples/sample_tile_00100.png",
+    "sample_id": "97318.png",
+    "description": "Meerut Outer Belt / Intensive Farmland Mosaic",
+    "latitude": 28.94747,
+    "longitude": 77.74959,
+    "easting": 768000.0,
+    "northing": 3205280.0,
+    "coordinate_system": "WGS 84 / UTM zone 43N (EPSG:32643)",
+    "location_verified": true
+  },
+  {
+    "index": 200,
+    "filename": "sample_tile_00200.png",
+    "path": "data/processed/samples/sample_tile_00200.png",
+    "sample_id": "106442.png",
+    "description": "Modinagar Corridor / Mixed Built-Vegetation Zone",
+    "latitude": 28.86879,
+    "longitude": 77.64257,
+    "easting": 757760.0,
+    "northing": 3196320.0,
+    "coordinate_system": "WGS 84 / UTM zone 43N (EPSG:32643)",
+    "location_verified": true
+  }
+]

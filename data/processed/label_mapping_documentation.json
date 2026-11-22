@@ -1,0 +1,57 @@
+{
+  "status": "NUMERIC_CLASSES_VERIFIED_SEMANTIC_NAMES_UNVERIFIED",
+  "policy": "Strict zero-fabrication: Class semantics are reported as integer IDs until verified via ground truth calibration.",
+  "total_sampled_pixels": 2048000,
+  "samples_audited_count": 500,
+  "classes": {
+    "1": {
+      "class_id": 1,
+      "verified_pixel_count": 24265,
+      "frequency_percentage": 1.185,
+      "verified_semantic_name": null,
+      "status": "AWAITING_GROUND_TRUTH_CALIBRATION"
+    },
+    "2": {
+      "class_id": 2,
+      "verified_pixel_count": 26482,
+      "frequency_percentage": 1.293,
+      "verified_semantic_name": null,
+      "status": "AWAITING_GROUND_TRUTH_CALIBRATION"
+    },
+    "3": {
+      "class_id": 3,
+      "verified_pixel_count": 125668,
+      "frequency_percentage": 6.136,
+      "verified_semantic_name": null,
+      "status": "AWAITING_GROUND_TRUTH_CALIBRATION"
+    },
+    "4": {
+      "class_id": 4,
+      "verified_pixel_count": 239649,
+      "frequency_percentage": 11.702,
+      "verified_semantic_name": null,
+      "status": "AWAITING_GROUND_TRUTH_CALIBRATION"
+    },
+    "5": {
+      "class_id": 5,
+      "verified_pixel_count": 564824,
+      "frequency_percentage": 27.579,
+      "verified_semantic_name": null,
+      "status": "AWAITING_GROUND_TRUTH_CALIBRATION"
+    },
+    "6": {
+      "class_id": 6,
+      "verified_pixel_count": 977757,
+      "frequency_percentage": 47.742,
+      "verified_semantic_name": null,
+      "status": "AWAITING_GROUND_TRUTH_CALIBRATION"
+    },
+    "7": {
+      "class_id": 7,
+      "verified_pixel_count": 89355,
+      "frequency_percentage": 4.363,
+      "verified_semantic_name": null,
+      "status": "AWAITING_GROUND_TRUTH_CALIBRATION"
+    }
+  }
+}

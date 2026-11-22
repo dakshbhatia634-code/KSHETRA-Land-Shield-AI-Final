@@ -1,0 +1,67 @@
+{
+  "total_harmonized_points": 968,
+  "total_satellite_tiles": 30537,
+  "points_within_utm_zone_43n_bounds": 40,
+  "points_with_exact_tile_footprint_overlap": 7,
+  "points_without_tile_overlap": 961,
+  "overlap_percentage": 0.72,
+  "overlapping_sample_records": [
+    {
+      "point_id": "PT_0820",
+      "tile_index": 10696,
+      "longitude": 77.5005775220137,
+      "latitude": 28.17378867903275,
+      "landcover_2016": 0,
+      "landcover_2024": 0
+    },
+    {
+      "point_id": "PT_0824",
+      "tile_index": 27328,
+      "longitude": 77.26431001253582,
+      "latitude": 28.38984317352957,
+      "landcover_2016": 1,
+      "landcover_2024": 1
+    },
+    {
+      "point_id": "PT_0827",
+      "tile_index": 15820,
+      "longitude": 78.12609626628817,
+      "latitude": 28.484127730183165,
+      "landcover_2016": 0,
+      "landcover_2024": 0
+    },
+    {
+      "point_id": "PT_0828",
+      "tile_index": 15172,
+      "longitude": 77.15923273300979,
+      "latitude": 28.4841978239128,
+      "landcover_2016": 1,
+      "landcover_2024": 1
+    },
+    {
+      "point_id": "PT_0831",
+      "tile_index": 2750,
+      "longitude": 76.91440888708985,
+      "latitude": 28.56966197107969,
+      "landcover_2016": 0,
+      "landcover_2024": 0
+    },
+    {
+      "point_id": "PT_0842",
+      "tile_index": 20453,
+      "longitude": 77.23675915379513,
+      "latitude": 28.736088029975427,
+      "landcover_2016": 0,
+      "landcover_2024": 0
+    },
+    {
+      "point_id": "PT_0846",
+      "tile_index": 4188,
+      "longitude": 77.09907326978856,
+      "latitude": 28.785650923602944,
+      "landcover_2016": 0,
+      "landcover_2024": 0
+    }
+  ],
+  "conclusion": "STATISTICALLY_AND_GEOGRAPHICALLY_INDEPENDENT. The CSV points represent a sparse Pan-India network (only 7 of 968 points intersect local tile footprints). They cannot be used as training supervision for the Parquet computer vision masks."
+}

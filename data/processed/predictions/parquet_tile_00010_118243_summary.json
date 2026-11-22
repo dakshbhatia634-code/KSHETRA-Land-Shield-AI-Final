@@ -1,0 +1,92 @@
+{
+  "sample_name": "parquet_tile_00010_118243",
+  "inference_time_ms": 323.29,
+  "device": "cuda",
+  "checkpoint_epoch": 20,
+  "best_val_miou": 0.4839,
+  "class_breakdown": {
+    "class_1": {
+      "class_id": 1,
+      "class_name": "Class 1",
+      "pixel_count": 7,
+      "percentage": 0.17,
+      "color_rgb": [
+        0,
+        119,
+        182
+      ]
+    },
+    "class_2": {
+      "class_id": 2,
+      "class_name": "Class 2",
+      "pixel_count": 126,
+      "percentage": 3.08,
+      "color_rgb": [
+        45,
+        106,
+        79
+      ]
+    },
+    "class_3": {
+      "class_id": 3,
+      "class_name": "Class 3",
+      "pixel_count": 621,
+      "percentage": 15.16,
+      "color_rgb": [
+        72,
+        202,
+        228
+      ]
+    },
+    "class_4": {
+      "class_id": 4,
+      "class_name": "Class 4",
+      "pixel_count": 514,
+      "percentage": 12.55,
+      "color_rgb": [
+        116,
+        198,
+        157
+      ]
+    },
+    "class_5": {
+      "class_id": 5,
+      "class_name": "Class 5",
+      "pixel_count": 1841,
+      "percentage": 44.95,
+      "color_rgb": [
+        255,
+        183,
+        3
+      ]
+    },
+    "class_6": {
+      "class_id": 6,
+      "class_name": "Class 6",
+      "pixel_count": 621,
+      "percentage": 15.16,
+      "color_rgb": [
+        203,
+        153,
+        126
+      ]
+    },
+    "class_7": {
+      "class_id": 7,
+      "class_name": "Class 7",
+      "pixel_count": 366,
+      "percentage": 8.94,
+      "color_rgb": [
+        157,
+        78,
+        221
+      ]
+    }
+  },
+  "saved_files": {
+    "predicted_mask": "data\\processed\\predictions\\parquet_tile_00010_118243_predicted_mask.png",
+    "colorized_mask": "data\\processed\\predictions\\parquet_tile_00010_118243_colorized_mask.png",
+    "side_by_side": "data\\processed\\predictions\\parquet_tile_00010_118243_side_by_side.png",
+    "legend": "data\\processed\\predictions\\parquet_tile_00010_118243_legend.png"
+  }
+}
